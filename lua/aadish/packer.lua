@@ -41,7 +41,14 @@ return require('packer').startup(function(use)
 			require("fidget").setup({})
 		end
 	}
-
+use 'mbbill/undotree'
+use 'navarasu/onedark.nvim'
+use {
+  'nvim-tree/nvim-tree.lua',
+  requires = {
+    'nvim-tree/nvim-web-devicons', -- optional
+  },
+}
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if packer_bootstrap then
