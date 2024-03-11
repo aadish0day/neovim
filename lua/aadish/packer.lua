@@ -45,6 +45,23 @@ use 'mbbill/undotree'
 use 'navarasu/onedark.nvim'
 use 'nvim-tree/nvim-tree.lua'
 use 'nvim-tree/nvim-web-devicons'
+use {
+  'VonHeikemen/lsp-zero.nvim',
+  branch = 'v3.x',
+  requires = {
+    -- Autocompletion
+    {'hrsh7th/nvim-cmp'},
+    {'hrsh7th/cmp-nvim-lsp'},
+    {'honza/vim-snippets'},
+    {'rafamadriz/friendly-snippets'},
+    {'L3MON4D3/LuaSnip'},
+  }
+}
+use {
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    "neovim/nvim-lspconfig",
+}
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if packer_bootstrap then
