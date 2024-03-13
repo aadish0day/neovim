@@ -4,7 +4,7 @@ Clone neovim_config.nvim:
 
 <details><summary> Linux</summary>
 
-```sh
+```lua
 git clone https://github.com/Aadishx07/neovim_config.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 ```
 
@@ -12,7 +12,7 @@ git clone https://github.com/Aadishx07/neovim_config.git "${XDG_CONFIG_HOME:-$HO
 
 <details><summary> Remove config</summary>
 
-```sh
+```lua
 rm -rf ~/.config/nvim
 rm -rf ~/.local/share/nvim
 ```
