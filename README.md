@@ -1,7 +1,5 @@
 # neovim_config
 
-Clone neovim_config.nvim:
-
 <details><summary> Install neovim config</summary>
 
 ```lua
