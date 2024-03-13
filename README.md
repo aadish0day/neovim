@@ -2,7 +2,7 @@
 
 Clone neovim_config.nvim:
 
-<details><summary> Linux</summary>
+<details><summary> Install neovim config</summary>
 
 ```lua
 git clone https://github.com/Aadishx07/neovim_config.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
