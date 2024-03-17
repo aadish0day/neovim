@@ -26,8 +26,10 @@ require("mason").setup({
         }
     }
 })
+
 require('mason-lspconfig').setup({
-    ensure_installed = {'tsserver', 'lua_ls'},
+    ensure_installed = {'tsserver', 'lua_ls', 'html', 'cssls', 'jdtls', 'bashls'},
+    automatic_installation = true,
     handlers = {
         lsp_zero.default_setup,
         lua_ls = function()
@@ -36,6 +38,7 @@ require('mason-lspconfig').setup({
         end,
     }
 })
+local lspconfig = require('lspconfig')
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
