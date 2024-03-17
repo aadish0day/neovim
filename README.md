@@ -1,4 +1,3 @@
-# neovim_config
 
 ### Install neovim 
 
