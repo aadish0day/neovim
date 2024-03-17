@@ -38,7 +38,6 @@ require('mason-lspconfig').setup({
         end,
     }
 })
-local lspconfig = require('lspconfig')
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
