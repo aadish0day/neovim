@@ -57,6 +57,7 @@ return require('packer').startup(function(use)
             { 'rafamadriz/friendly-snippets' },
             { 'L3MON4D3/LuaSnip' },
             { 'hrsh7th/cmp-nvim-lua' },
+            {'onsails/lspkind.nvim'},
         }
     }
     use {
@@ -64,7 +65,8 @@ return require('packer').startup(function(use)
         "williamboman/mason-lspconfig.nvim",
         "neovim/nvim-lspconfig",
     }
-    use 'onsails/lspkind.nvim'
+
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if packer_bootstrap then
