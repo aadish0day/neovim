@@ -1,7 +1,7 @@
 local lsp_zero = require('lsp-zero')
 
 lsp_zero.on_attach(function(client, bufnr)
-    local opts = {buffer = bufnr, remap = false}
+    local opts = { buffer = bufnr, remap = false }
 
     vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
     vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
@@ -26,7 +26,7 @@ require("mason").setup({
 })
 
 require('mason-lspconfig').setup({
-    ensure_installed = {'tsserver', 'lua_ls', 'html', 'cssls', 'jdtls', 'bashls'},
+    ensure_installed = { 'tsserver', 'lua_ls', 'html', 'cssls', 'jdtls', 'bashls' },
     automatic_installation = true,
     handlers = {
         lsp_zero.default_setup,
@@ -38,15 +38,15 @@ require('mason-lspconfig').setup({
 })
 
 local cmp = require('cmp')
-local cmp_select = {behavior = cmp.SelectBehavior.Select}
+local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
 cmp.setup({
     sources = {
-        {name = 'path'},
-        {name = 'nvim_lsp'},
-        {name = 'nvim_lua'},
-        {name = 'luasnip', keyword_length = 2},
-        {name = 'buffer', keyword_length = 3},
+        { name = 'path' },
+        { name = 'nvim_lsp' },
+        { name = 'nvim_lua' },
+        { name = 'luasnip', keyword_length = 2 },
+        { name = 'buffer',  keyword_length = 3 },
     },
     formatting = lsp_zero.cmp_format(),
     mapping = cmp.mapping.preset.insert({
@@ -59,10 +59,10 @@ cmp.setup({
 
 cmp.setup({
     formatting = {
-        fields = {'abbr', 'kind', 'menu'},
+        fields = { 'abbr', 'kind', 'menu' },
         format = require('lspkind').cmp_format({
-            mode = 'symbol', -- show only symbol annotations
-            maxwidth = 50, -- prevent the popup from showing more than provided characters
+            mode = 'symbol',       -- show only symbol annotations
+            maxwidth = 50,         -- prevent the popup from showing more than provided characters
             ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead
         })
     }
@@ -81,4 +81,3 @@ cmp.setup({
         documentation = cmp.config.window.bordered(),
     }
 })
-

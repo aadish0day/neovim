@@ -10,4 +10,3 @@ vim.keymap.set('n', '<leader>/', function()
         previewer = false,
     })
 end, { desc = '' })
-

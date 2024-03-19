@@ -8,7 +8,7 @@ vim.opt.termguicolors = true
 -- empty setup using defaults
 require("nvim-tree").setup()
 
-vim.keymap.set('n', '<C-f>', ':NvimTreeOpen<CR>', {silent = true})
+vim.keymap.set('n', '<C-f>', ':NvimTreeOpen<CR>', { silent = true })
 
 -- OR setup with some options
 require("nvim-tree").setup({
@@ -60,4 +60,3 @@ require("nvim-tree").setup({
         dotfiles = true,
     },
 })
-
