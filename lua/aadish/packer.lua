@@ -34,9 +34,9 @@ return require('packer').startup(function(use)
     use 'mbbill/undotree'
     use 'navarasu/onedark.nvim'
     use {'akinsho/bufferline.nvim', tag = "*"}
+    use 'nvim-tree/nvim-web-devicons'
     use 'nvim-tree/nvim-tree.lua'
     use 'lukas-reineke/indent-blankline.nvim'
-    use 'nvim-tree/nvim-web-devicons'
     use 'lewis6991/gitsigns.nvim'
     -- LSP configurations start
     use {
