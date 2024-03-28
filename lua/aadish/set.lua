@@ -14,6 +14,9 @@ vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"  -- Directory where undo 
 vim.opt.undofile = true  -- Save undo history to an undo file
 
 vim.opt.cursorline = true  -- Highlight the current line
-vim.opt.showcmd = true  -- Show command in the last line of the screen
 vim.opt.showmode = false  -- Do not display the mode (e.g., --INSERT--) in the command line area
 
+vim.opt.termguicolors = true  -- Enable true color support
+vim.opt.scrolloff = 8  -- Minimum number of lines to keep above and below the cursor
+
+vim.opt.updatetime = 50  -- Time in milliseconds to wait before triggering the plugin events

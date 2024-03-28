@@ -1,3 +1,3 @@
 require("aadish.remap")
 require("aadish.set")
-require("aadish.packer")
+require("aadish.packer").compile()
