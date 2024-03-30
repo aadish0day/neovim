@@ -9,7 +9,7 @@ local ensure_packer = function()
         vim.cmd [[packadd packer.nvim]]
         return true -- Return true to indicate that Packer was not previously installed
     end
-    return false -- Return false to indicate that Packer was already installed
+    return false    -- Return false to indicate that Packer was already installed
 end
 
 -- Attempt to ensure Packer is installed, and store the result
@@ -65,6 +65,7 @@ return require('packer').startup(function(use)
 
     -- gitsigns for git integration
     use 'lewis6991/gitsigns.nvim'
+    use 'ThePrimeagen/vim-be-good'
 
     -- LSP (Language Server Protocol) configurations start
     -- Mason for managing LSP servers, linters, and formatters

@@ -1,5 +1,6 @@
 vim.opt.nu = true  -- Enable line numbers
 vim.opt.relativenumber = true  -- Display line numbers as relative to the line with the cursor
+vim.opt.mouse = ""
 
 vim.opt.tabstop = 4  -- Number of spaces that a <Tab> in the file counts for
 vim.opt.softtabstop = 4  -- Number of spaces that a <Tab> counts for while performing editing operations
