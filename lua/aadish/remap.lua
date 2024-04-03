@@ -55,10 +55,3 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 -- Make file executable
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
--- Autocommand for highlighting yanked text
-vim.api.nvim_create_autocmd('TextYankPost', {
-    group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
-    callback = function()
-        vim.highlight.on_yank({ higroup = 'IncSearch', timeout = 150 })
-    end,
-})
