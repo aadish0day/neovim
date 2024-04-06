@@ -21,6 +21,9 @@ vim.keymap.set("x", "<leader>p", [["_dP]])
 -- Delete without overwriting the clipboard
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
+-- Cut without overwriting the clipboard
+vim.keymap.set({ "n", "v" }, "<leader>c", [["_c]])
+
 -- Yank to system clipboard
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
@@ -36,10 +39,9 @@ vim.keymap.set("n", "Q", "<nop>")
 
 -- LSP formatting shortcut
 vim.keymap.set("n", "<leader>f", function()
-    if vim.lsp.buf.format then
-        vim.lsp.buf.format()
-    elseif vim.lsp.buf.formatting then
-        vim.lsp.buf.formatting()
+    local buf_format = vim.lsp.buf.format or vim.lsp.buf.formatting
+    if buf_format then
+        buf_format()
     end
 end)
 
@@ -54,4 +56,3 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 
 -- Make file executable
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
-
