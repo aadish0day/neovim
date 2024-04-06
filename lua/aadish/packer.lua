@@ -83,9 +83,9 @@ return require('packer').startup(function(use)
             -- Various plugins for autocompletion
             { 'hrsh7th/nvim-cmp' },
             { 'hrsh7th/cmp-nvim-lsp' },
+            { 'L3MON4D3/LuaSnip' },
             { 'honza/vim-snippets' },
             { 'rafamadriz/friendly-snippets' },
-            { 'L3MON4D3/LuaSnip' },
             { 'hrsh7th/cmp-nvim-lua' },
             { 'onsails/lspkind.nvim' },
         }
