@@ -65,6 +65,8 @@ return require('packer').startup(function(use)
 
     -- gitsigns for git integration
     use 'lewis6991/gitsigns.nvim'
+
+    -- To pratice vim
     use 'ThePrimeagen/vim-be-good'
 
     -- LSP (Language Server Protocol) configurations start
