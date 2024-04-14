@@ -69,31 +69,6 @@ return require('packer').startup(function(use)
     -- To pratice vim
     use 'ThePrimeagen/vim-be-good'
 
-    -- LSP (Language Server Protocol) configurations start
-    -- Mason for managing LSP servers, linters, and formatters
-    use {
-        "williamboman/mason.nvim",
-        "williamboman/mason-lspconfig.nvim",
-        "neovim/nvim-lspconfig",
-    }
-
-    -- lsp-zero for a simplified LSP setup
-    use {
-        'VonHeikemen/lsp-zero.nvim',
-        branch = 'v3.x',
-        requires = {
-            -- Various plugins for autocompletion
-            { 'hrsh7th/nvim-cmp' },
-            { 'hrsh7th/cmp-nvim-lsp' },
-            { 'L3MON4D3/LuaSnip' },
-            { 'honza/vim-snippets' },
-            { 'rafamadriz/friendly-snippets' },
-            { 'hrsh7th/cmp-nvim-lua' },
-            { 'onsails/lspkind.nvim' },
-        }
-    }
-    -- LSP configurations end
-
     -- Automatically set up your configuration after cloning packer.nvim
     -- so Neovim doesn't have to be restarted
     if packer_bootstrap then
