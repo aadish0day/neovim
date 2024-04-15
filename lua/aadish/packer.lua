@@ -69,6 +69,11 @@ return require('packer').startup(function(use)
     -- To pratice vim
     use 'ThePrimeagen/vim-be-good'
 
+    use {
+        "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim",
+        "neovim/nvim-lspconfig",
+    }
     -- Automatically set up your configuration after cloning packer.nvim
     -- so Neovim doesn't have to be restarted
     if packer_bootstrap then
