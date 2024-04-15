@@ -19,7 +19,12 @@ require("mason-lspconfig").setup({
 -- Setup nvim-lspconfig with default configurations
 require("mason-lspconfig").setup_handlers({
     function(server_name) -- default handler for all other servers
-        require("lspconfig")[server_name].setup({})
+        require("lspconfig")[server_name].setup({
+            -- Optionally set debounce text changes to enhance performance
+            flags = {
+                debounce_text_changes = 150,
+            }
+        })
     end,
     -- Custom configuration for Lua language server
     ["lua_ls"] = function()
@@ -27,23 +32,27 @@ require("mason-lspconfig").setup_handlers({
             settings = {
                 Lua = {
                     diagnostics = {
-                        -- Get the language server to recognize the `vim` global
-                        globals = { 'vim' },
+                        globals = {'vim'}, -- Recognize `vim` as a global
                     },
                     runtime = {
-                        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
                         version = 'LuaJIT',
                     },
                     workspace = {
-                        -- Make the server aware of Neovim runtime files
-                        library = vim.api.nvim_get_runtime_file("", true),
+                        -- Limit library path to only essential directories to improve indexing speed
+                        library = {
+                            [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+                            [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+                        }
                     },
                     telemetry = {
-                        -- Do not send telemetry data containing a randomized but unique identifier
-                        enable = false,
+                        enable = false, -- Disable telemetry
                     },
                 },
             },
+            flags = {
+                debounce_text_changes = 150,
+            }
         })
     end,
 })
+
