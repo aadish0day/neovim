@@ -18,7 +18,7 @@ require("mason-lspconfig").setup({
 
 -- Setup nvim-lspconfig with default configurations
 require("mason-lspconfig").setup_handlers({
-    function(server_name)  -- default handler for all other servers
+    function(server_name) -- default handler for all other servers
         require("lspconfig")[server_name].setup({})
     end,
     -- Custom configuration for Lua language server
@@ -28,9 +28,9 @@ require("mason-lspconfig").setup_handlers({
                 Lua = {
                     diagnostics = {
                         -- Get the language server to recognize the `vim` global
-                        globals = {'vim'},
+                        globals = { 'vim' },
                     },
-                    runtime = { 
+                    runtime = {
                         -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
                         version = 'LuaJIT',
                     },
@@ -47,5 +47,3 @@ require("mason-lspconfig").setup_handlers({
         })
     end,
 })
-
-
