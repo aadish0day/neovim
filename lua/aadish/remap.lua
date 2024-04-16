@@ -34,6 +34,8 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 -- Keybinding for saving the file with Ctrl+s in normal, insert, and visual modes
 vim.keymap.set({ "n", "i", "v" }, "<C-s>", "<cmd>w<CR>", { silent = true })
 
+vim.keymap.set({ "n", "i", "v" }, "<C-S>", "<cmd>:wa<CR>", { silent = true })
+
 -- Disable Ex mode mapping
 vim.keymap.set("n", "Q", "<nop>")
 
