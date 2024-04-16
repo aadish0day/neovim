@@ -18,40 +18,27 @@ require("mason-lspconfig").setup({
 
 -- Setup nvim-lspconfig with default configurations
 require("mason-lspconfig").setup_handlers({
-    function(server_name) -- default handler for all other servers
+    function(server_name) -- Default setup for all servers
         require("lspconfig")[server_name].setup({
-            -- Optionally set debounce text changes to enhance performance
-            flags = {
-                debounce_text_changes = 150,
-            }
+            flags = { debounce_text_changes = 150 }
         })
     end,
-    -- Custom configuration for Lua language server
-    ["lua_ls"] = function()
-        require("lspconfig")["lua_ls"].setup({
+    ["lua_ls"] = function() -- Custom setup for Lua language server
+        require("lspconfig").lua_ls.setup({
             settings = {
                 Lua = {
-                    diagnostics = {
-                        globals = {'vim'}, -- Recognize `vim` as a global
-                    },
-                    runtime = {
-                        version = 'LuaJIT',
-                    },
+                    diagnostics = { globals = {'vim'} },
+                    runtime = { version = 'LuaJIT' },
                     workspace = {
-                        -- Limit library path to only essential directories to improve indexing speed
                         library = {
                             [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-                            [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+                            [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true
                         }
                     },
-                    telemetry = {
-                        enable = false, -- Disable telemetry
-                    },
-                },
+                    telemetry = { enable = false }
+                }
             },
-            flags = {
-                debounce_text_changes = 150,
-            }
+            flags = { debounce_text_changes = 150 }
         })
     end,
 })
