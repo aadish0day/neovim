@@ -13,21 +13,27 @@ require("mason").setup({
 require("mason-lspconfig").setup({
     -- List your LSP servers here
     ensure_installed = { 'tsserver', 'lua_ls', 'html', 'cssls', 'jdtls', 'bashls' },
-    automatic_installation = true,
+    auto_install = true,
 })
 
--- Setup nvim-lspconfig with default configurations
+-- Setup capabilities from nvim-cmp
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+-- Setup nvim-lspconfig with default configurations through mason-lspconfig's setup_handlers
 require("mason-lspconfig").setup_handlers({
-    function(server_name) -- Default setup for all servers
+    -- Default handler for all servers
+    function(server_name)
         require("lspconfig")[server_name].setup({
-            flags = { debounce_text_changes = 150 }
+            flags = { debounce_text_changes = 150 },
+            capabilities = capabilities
         })
     end,
-    ["lua_ls"] = function() -- Custom setup for Lua language server
+    -- Custom setup for Lua language server
+    ["lua_ls"] = function()
         require("lspconfig").lua_ls.setup({
             settings = {
                 Lua = {
-                    diagnostics = { globals = {'vim'} },
+                    diagnostics = { globals = { 'vim' } },
                     runtime = { version = 'LuaJIT' },
                     workspace = {
                         library = {
@@ -35,11 +41,11 @@ require("mason-lspconfig").setup_handlers({
                             [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true
                         }
                     },
-                    telemetry = { enable = false }
+                    telemetry = { enable = false },
                 }
             },
-            flags = { debounce_text_changes = 150 }
+            flags = { debounce_text_changes = 150 },
+            capabilities = capabilities
         })
     end,
 })
-
