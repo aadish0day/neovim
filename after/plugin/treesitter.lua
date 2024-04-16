@@ -24,4 +24,3 @@ require('nvim-treesitter.configs').setup {
     -- Specify parsers to ignore during installation (empty if none)
     ignore_install = {}
 }
-
