@@ -12,7 +12,7 @@ require("mason").setup({
 -- Set up mason-lspconfig
 require("mason-lspconfig").setup({
     -- List your LSP servers here
-    ensure_installed = { 'tsserver', 'lua_ls', 'html', 'cssls', 'jdtls', 'bashls' },
+    ensure_installed = { 'tsserver', 'lua_ls', 'html', 'cssls', 'jdtls', 'bashls', 'grammarly' },
     auto_install = true,
 })
 
