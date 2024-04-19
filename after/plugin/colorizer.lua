@@ -1,5 +1,5 @@
--- Attaches to every FileType mode
-require 'colorizer'.setup(
+-- colorizer-config.lua
+require'colorizer'.setup(
     {'*'},           -- Highlight all file types.
     {
         RGB      = true;         -- #RGB hex codes
@@ -11,5 +11,4 @@ require 'colorizer'.setup(
         css_fn   = true;         -- Enable all CSS *functions*: rgb_fn, hsl_fn
     }
 )
-
 
