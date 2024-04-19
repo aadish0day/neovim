@@ -69,6 +69,7 @@ return require('packer').startup(function(use)
     -- To pratice vim
     use 'ThePrimeagen/vim-be-good'
 
+    use 'norcalli/nvim-colorizer.lua'
     -- Lsp starts
     use {
         "williamboman/mason.nvim",
