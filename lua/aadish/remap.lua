@@ -36,6 +36,12 @@ vim.keymap.set({ "n", "i", "v" }, "<C-s>", "<cmd>w<CR>", { silent = true })
 
 vim.keymap.set({ "n", "i", "v" }, "<C-S>", "<cmd>:wa<CR>", { silent = true })
 
+-- Split the window horizontally with Ctrl-h
+vim.keymap.set('n', '<C-h>', ':split<CR>', { silent = true })
+
+-- Split the window vertically with Ctrl-v
+vim.keymap.set('n', '<C-v>', ':vsplit<CR>', { silent = true })
+
 -- Disable Ex mode mapping
 vim.keymap.set("n", "Q", "<nop>")
 
