@@ -24,11 +24,8 @@ return require('packer').startup(function(use)
     -- nvim-treesitter for advanced syntax highlighting and more
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 
-    -- lualine for a fancy status line
-    use {
-        'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-    }
+    -- lualine for a fancy status lines
+    use 'Famiu/feline.nvim'
 
     -- telescope for fuzzy finding and more
     use {
