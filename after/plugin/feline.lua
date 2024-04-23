@@ -3,7 +3,7 @@ if not line_ok then
 	return
 end
 
-local one_monokai = {
+local onedark = {
 	fg = "#abb2bf",
 	bg = "#1e2024",
 	green = "#98c379",
@@ -228,6 +228,6 @@ local components = {
 
 feline.setup({
 	components = components,
-	theme = one_monokai,
+	theme = onedark,
 	vi_mode_colors = vi_mode_colors,
 })
