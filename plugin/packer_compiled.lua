@@ -135,6 +135,11 @@ _G.packer_plugins = {
     path = "/home/aadish/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
+  ["mini.surround"] = {
+    loaded = true,
+    path = "/home/aadish/.local/share/nvim/site/pack/packer/start/mini.surround",
+    url = "https://github.com/echasnovski/mini.surround"
+  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/home/aadish/.local/share/nvim/site/pack/packer/start/nvim-cmp",
