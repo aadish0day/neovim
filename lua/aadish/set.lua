@@ -21,3 +21,5 @@ vim.opt.termguicolors = true  -- Enable true color support
 vim.opt.scrolloff = 8  -- Minimum number of lines to keep above and below the cursor
 
 vim.opt.updatetime = 50  -- Time in milliseconds to wait before triggering the plugin events
+
+vim.opt.signcolumn = 'yes'

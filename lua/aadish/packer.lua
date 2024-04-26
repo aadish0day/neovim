@@ -68,6 +68,8 @@ return require('packer').startup(function(use)
 
     use 'norcalli/nvim-colorizer.lua'
 
+    use 'folke/which-key.nvim'
+
     -- Lsp starts
     use {
         "williamboman/mason.nvim",
