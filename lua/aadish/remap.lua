@@ -32,9 +32,11 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
 -- Keybinding for saving the file with Ctrl+s in normal, insert, and visual modes
-vim.keymap.set({ "n", "i", "v" }, "<C-s>", "<cmd>w<CR>", { silent = true })
+vim.keymap.set('n', '<C-s>', '<cmd>w<CR>', { silent = true })
+vim.keymap.set('i', '<C-s>', '<C-[><cmd>w<CR><C-o>', { silent = true })
+vim.keymap.set('v', '<C-s>', '<C-c><cmd>w<CR>', { silent = true })
 
-vim.keymap.set({ "n", "i", "v" }, "<C-S>", "<cmd>:wa<CR>", { silent = true })
+vim.keymap.set({ "n", "i", "v" }, "<leader>sa", "<cmd>wa<CR>", { silent = true })
 
 -- Split the window horizontally with Ctrl-h
 -- vim.keymap.set('n', '<C-h>', ':split<CR>', { silent = true })
