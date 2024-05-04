@@ -25,7 +25,10 @@ return require('packer').startup(function(use)
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 
     -- lualine for a fancy status lines
-    use 'Famiu/feline.nvim'
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+    }
 
     -- telescope for fuzzy finding and more
     use {
