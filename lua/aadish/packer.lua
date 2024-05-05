@@ -48,6 +48,8 @@ return require('packer').startup(function(use)
     -- undotree for visualizing vim undo history
     use 'mbbill/undotree'
 
+    use 'nvimtools/none-ls.nvim'
+
     -- onedark theme for Neovim
     use 'navarasu/onedark.nvim'
 
