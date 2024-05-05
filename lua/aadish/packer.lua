@@ -48,8 +48,6 @@ return require('packer').startup(function(use)
     -- undotree for visualizing vim undo history
     use 'mbbill/undotree'
 
-    use 'nvimtools/none-ls.nvim'
-    use 'WhoIsSethDaniel/mason-tool-installer.nvim'
     -- onedark theme for Neovim
     use 'navarasu/onedark.nvim'
 
@@ -88,6 +86,10 @@ return require('packer').startup(function(use)
         "hrsh7th/cmp-path",
     }
     -- lsp stops
+
+    use 'nvimtools/none-ls.nvim'
+
+    use 'WhoIsSethDaniel/mason-tool-installer.nvim'
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- so Neovim doesn't have to be restarted
