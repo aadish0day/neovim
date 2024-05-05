@@ -49,7 +49,7 @@ return require('packer').startup(function(use)
     use 'mbbill/undotree'
 
     use 'nvimtools/none-ls.nvim'
-
+    use 'WhoIsSethDaniel/mason-tool-installer.nvim'
     -- onedark theme for Neovim
     use 'navarasu/onedark.nvim'
 

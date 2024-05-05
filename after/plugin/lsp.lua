@@ -9,6 +9,12 @@ require("mason").setup({
     }
 })
 
+require("mason-tool-installer").setup({
+    ensure_installed = { 'shfmt' },  -- specifying shfmt here
+    auto_update = true,
+    run_on_start = true
+})
+
 -- Set up mason-lspconfig
 require("mason-lspconfig").setup({
     ensure_installed = { 'tsserver', 'lua_ls', 'html', 'cssls', 'jdtls', 'bashls' },
