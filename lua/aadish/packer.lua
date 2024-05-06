@@ -37,14 +37,6 @@ return require('packer').startup(function(use)
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
-    -- fidget for LSP progress
-    use {
-        "j-hui/fidget.nvim",
-        config = function()
-            require("fidget").setup({})
-        end
-    }
-
     -- undotree for visualizing vim undo history
     use 'mbbill/undotree'
 
@@ -84,12 +76,15 @@ return require('packer').startup(function(use)
         "saadparwaiz1/cmp_luasnip",
         "rafamadriz/friendly-snippets",
         "hrsh7th/cmp-path",
+        "nvimtools/none-ls.nvim",
+
+        "WhoIsSethDaniel/mason-tool-installer.nvim",
     }
     -- lsp stops
 
-    use 'nvimtools/none-ls.nvim'
+    -- fidget for LSP progress
+    use 'j-hui/fidget.nvim'
 
-    use 'WhoIsSethDaniel/mason-tool-installer.nvim'
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- so Neovim doesn't have to be restarted
