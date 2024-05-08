@@ -1,12 +1,5 @@
--- disable netrw at the very start of your init.lua
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
 -- optionally enable 24-bit colour
 vim.opt.termguicolors = true
-
--- empty setup using defaults
-require("nvim-tree").setup()
 
 vim.keymap.set('n', '<C-f>', ':NvimTreeOpen<CR>', { silent = true })
 
@@ -23,7 +16,7 @@ require("nvim-tree").setup({
             open_win_config = function()
                 -- Constants for window dimensions ratios
                 local WIDTH_RATIO = 0.8  -- You can adjust this value
-                local HEIGHT_RATIO = 0.8  -- You can adjust this value
+                local HEIGHT_RATIO = 0.8 -- You can adjust this value
 
                 local screen_w = vim.opt.columns:get()
                 local screen_h = vim.opt.lines:get() - vim.opt.cmdheight:get()
@@ -86,4 +79,3 @@ require("nvim-tree").setup({
         dotfiles = false,
     },
 })
-
