@@ -86,6 +86,15 @@ return require('packer').startup(function(use)
     use 'j-hui/fidget.nvim'
 
 
+    use {
+        "windwp/nvim-autopairs",
+        event = "InsertEnter",
+        config = function()
+            require("nvim-autopairs").setup {}
+        end
+    }
+
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- so Neovim doesn't have to be restarted
     if packer_bootstrap then
