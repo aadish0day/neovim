@@ -23,3 +23,6 @@ vim.opt.scrolloff = 8                                  -- Minimum number of line
 vim.opt.updatetime = 50                                -- Time in milliseconds to wait before triggering the plugin events
 
 vim.opt.signcolumn = 'yes'
+
+vim.opt.spelllang = 'en_us'
+vim.opt.spell = true
