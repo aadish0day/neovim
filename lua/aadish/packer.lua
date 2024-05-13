@@ -94,6 +94,10 @@ return require('packer').startup(function(use)
         end
     }
 
+    use({
+        "kylechui/nvim-surround",
+        tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+    })
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- so Neovim doesn't have to be restarted
