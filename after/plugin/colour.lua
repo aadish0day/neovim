@@ -4,4 +4,3 @@ require('onedark').setup {
     transparent = true -- Enable transparency
 }
 require('onedark').load()
-
