@@ -1,5 +1,3 @@
-require("ibl").setup()
-
 local highlight = {
     "RainbowRed",
     "RainbowYellow",
