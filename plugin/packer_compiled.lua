@@ -84,6 +84,11 @@ _G.packer_plugins = {
     path = "/home/aadish/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
     url = "https://github.com/akinsho/bufferline.nvim"
   },
+  ["cmp-buffer"] = {
+    loaded = true,
+    path = "/home/aadish/.local/share/nvim/site/pack/packer/start/cmp-buffer",
+    url = "https://github.com/hrsh7th/cmp-buffer"
+  },
   ["cmp-nvim-lsp"] = {
     loaded = true,
     path = "/home/aadish/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
@@ -114,11 +119,6 @@ _G.packer_plugins = {
     path = "/home/aadish/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
-  ["indent-blankline.nvim"] = {
-    loaded = true,
-    path = "/home/aadish/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
-    url = "https://github.com/lukas-reineke/indent-blankline.nvim"
-  },
   ["lualine.nvim"] = {
     loaded = true,
     path = "/home/aadish/.local/share/nvim/site/pack/packer/start/lualine.nvim",
@@ -138,6 +138,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/aadish/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
+  },
+  ["mini.indentscope"] = {
+    loaded = true,
+    path = "/home/aadish/.local/share/nvim/site/pack/packer/start/mini.indentscope",
+    url = "https://github.com/echasnovski/mini.indentscope"
   },
   ["none-ls.nvim"] = {
     loaded = true,
@@ -175,7 +180,7 @@ _G.packer_plugins = {
   ["nvim-tree.lua"] = {
     loaded = true,
     path = "/home/aadish/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
-    url = "https://github.com/nvim-tree/nvim-tree.lua"
+    url = "https://github.com/kyazdani42/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
     loaded = true,
@@ -185,7 +190,7 @@ _G.packer_plugins = {
   ["nvim-web-devicons"] = {
     loaded = true,
     path = "/home/aadish/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
-    url = "https://github.com/nvim-tree/nvim-web-devicons"
+    url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
   ["onedark.nvim"] = {
     loaded = true,

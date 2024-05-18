@@ -22,7 +22,7 @@ return require('packer').startup(function(use)
 
     -- Plugin definitions
     -- nvim-treesitter for advanced syntax highlighting and more
-    use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
+    use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
 
     -- lualine for a fancy status lines
     use {
@@ -33,7 +33,6 @@ return require('packer').startup(function(use)
     -- telescope for fuzzy finding and more
     use {
         'nvim-telescope/telescope.nvim',
-        tag = '0.1.5',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
@@ -44,16 +43,16 @@ return require('packer').startup(function(use)
     use 'navarasu/onedark.nvim'
 
     -- bufferline for managing buffers
-    use { 'akinsho/bufferline.nvim', tag = "*" }
+    use 'akinsho/bufferline.nvim'
 
     -- Required for various file icons
-    use 'nvim-tree/nvim-web-devicons'
+    use 'kyazdani42/nvim-web-devicons'
 
     -- nvim-tree for file explorer
-    use 'nvim-tree/nvim-tree.lua'
+    use 'kyazdani42/nvim-tree.lua'
 
     -- indent-blankline for visually displaying indents
-    use 'lukas-reineke/indent-blankline.nvim'
+    use 'echasnovski/mini.indentscope'
 
     -- gitsigns for git integration
     use 'lewis6991/gitsigns.nvim'
@@ -77,14 +76,13 @@ return require('packer').startup(function(use)
         "rafamadriz/friendly-snippets",
         "hrsh7th/cmp-path",
         "nvimtools/none-ls.nvim",
-
+        "hrsh7th/cmp-buffer",
         "WhoIsSethDaniel/mason-tool-installer.nvim",
     }
     -- lsp stops
 
     -- fidget for LSP progress
     use 'j-hui/fidget.nvim'
-
 
     use {
         "windwp/nvim-autopairs",
@@ -94,10 +92,10 @@ return require('packer').startup(function(use)
         end
     }
 
-    use({
+    use {
         "kylechui/nvim-surround",
         tag = "*", -- Use for stability; omit to use `main` branch for the latest features
-    })
+    }
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- so Neovim doesn't have to be restarted
@@ -105,3 +103,4 @@ return require('packer').startup(function(use)
         require('packer').sync()
     end
 end)
+
