@@ -38,12 +38,6 @@ vim.keymap.set('v', '<C-s>', '<C-c><cmd>w<CR>', { silent = true })
 
 vim.keymap.set("n", "<leader>sa", "<cmd>wa<CR>", { silent = true })
 
--- Split the window horizontally with Ctrl-h
--- vim.keymap.set('n', '<C-h>', ':split<CR>', { silent = true })
-
--- Split the window vertically with Ctrl-v
--- vim.keymap.set('n', '<C-v>', ':vsplit<CR>', { silent = true })
-
 -- Disable Ex mode mapping
 vim.keymap.set("n", "Q", "<nop>")
 
@@ -55,7 +49,7 @@ vim.keymap.set("n", "<leader>f", function()
     end
 end)
 
--- Quickfix and location list navigation
+-- Quick fix and location list navigation
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
