@@ -24,6 +24,7 @@ return require('packer').startup(function(use)
         run = ':TSUpdate'
     }
 
+
     -- lualine for a fancy status line
     use {
         'nvim-lualine/lualine.nvim',
