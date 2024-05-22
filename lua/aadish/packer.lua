@@ -19,7 +19,10 @@ return require('packer').startup(function(use)
     -- Plugin definitions
 
     -- nvim-treesitter for advanced syntax highlighting and more
-    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate'
+    }
 
     -- lualine for a fancy status line
     use {
@@ -111,4 +114,3 @@ return require('packer').startup(function(use)
         require('packer').sync()
     end
 end)
-
