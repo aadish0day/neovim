@@ -89,12 +89,19 @@ return require('packer').startup(function(use)
         'hrsh7th/nvim-cmp',
         'hrsh7th/cmp-nvim-lsp',
         'hrsh7th/cmp-buffer',
-        'L3MON4D3/LuaSnip',
         'saadparwaiz1/cmp_luasnip',
         'rafamadriz/friendly-snippets',
         'WhoIsSethDaniel/mason-tool-installer.nvim',
         'nvimtools/none-ls.nvim',
     }
+
+    use({
+        "L3MON4D3/LuaSnip",
+        -- follow latest release.
+        tag = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+        -- install jsregexp (optional!:).
+        run = "make install_jsregexp"
+    })
 
     -- Fidget for LSP progress
     use 'j-hui/fidget.nvim'
