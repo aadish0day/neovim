@@ -1,13 +1,14 @@
--- disable netrw at the very start of your init.lua
+-- Disable netrw at the very start of your init.lua
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
--- optionally enable 24-bit colour
+-- Optionally enable 24-bit colour
 vim.opt.termguicolors = true
 
+-- Key mapping to open NvimTree with Ctrl+f
 vim.keymap.set('n', '<C-f>', ':NvimTreeOpen<CR>', { silent = true })
 
--- OR setup with some options
+-- Setup NvimTree with options
 require("nvim-tree").setup({
     sort = {
         sorter = "case_sensitive",
@@ -30,6 +31,7 @@ require("nvim-tree").setup({
                 local window_h_int = math.floor(window_h)
                 local center_x = (screen_w - window_w) / 2
                 local center_y = ((vim.opt.lines:get() - window_h) / 2) - vim.opt.cmdheight:get()
+
                 return {
                     border = "rounded",
                     relative = "editor",
@@ -43,8 +45,10 @@ require("nvim-tree").setup({
     },
     renderer = {
         group_empty = false,
+        highlight_opened_files = "all",
         indent_markers = {
             enable = true,
+            inline_arrows = true,
             icons = {
                 corner = "└ ",
                 edge = "│ ",

@@ -14,73 +14,71 @@ local packer_bootstrap = ensure_packer()
 
 -- Packer configuration
 return require('packer').startup(function(use)
+    -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
-    -- Plugin definitions
-
-    -- nvim-treesitter for advanced syntax highlighting and more
+    -- Syntax highlighting
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate'
     }
 
-    use({
+    -- Live server
+    use {
         "aurum77/live-server.nvim",
-        run = function()
-            require "live_server.util".install()
-        end,
-        cmd = { "LiveServer", "LiveServerStart", "LiveServerStop" },
-    })
+        run = function() require("live_server.util").install() end,
+        cmd = { "LiveServer", "LiveServerStart", "LiveServerStop" }
+    }
 
-    -- lualine for a fancy status line
+    -- Status line
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'nvim-tree/nvim-web-devicons', opt = true }
     }
 
-    -- telescope for fuzzy finding and more
+    -- Fuzzy finder
     use {
         'nvim-telescope/telescope.nvim',
-        requires = { 'nvim-lua/plenary.nvim' }
+        requires = 'nvim-lua/plenary.nvim'
     }
 
-    -- undotree for visualizing vim undo history
+    -- Undo tree visualizer
     use 'mbbill/undotree'
 
-    -- onedark theme for Neovim
+    -- Theme
     use 'navarasu/onedark.nvim'
 
-    -- bufferline for managing buffers
+    -- Buffer line
     use {
         'akinsho/bufferline.nvim',
-        requires = 'nvim-tree/nvim-web-devicons'
+        requires = 'kyazdani42/nvim-web-devicons'
     }
 
-    -- Required for various file icons
+    -- File icons
     use 'kyazdani42/nvim-web-devicons'
 
-    -- nvim-tree for file explorer
+    -- File explorer
     use {
         'kyazdani42/nvim-tree.lua',
         requires = 'kyazdani42/nvim-web-devicons'
     }
 
-    -- indent-blankline for visually displaying indents
+    -- Indent guides
     use 'lukas-reineke/indent-blankline.nvim'
 
-    -- gitsigns for git integration
+    -- Git integration
     use 'lewis6991/gitsigns.nvim'
 
-    -- To practice vim
+    -- Vim practice plugin
     use 'ThePrimeagen/vim-be-good'
 
-    -- Colorizer for highlighting color codes
+    -- Color codes
     use 'norcalli/nvim-colorizer.lua'
 
-    -- Which-key for displaying key bindings
+    -- Display key bindings
     use 'folke/which-key.nvim'
 
-    -- LSP configuration and related plugins
+    -- LSP and completion
     use {
         'williamboman/mason.nvim',
         'williamboman/mason-lspconfig.nvim',
@@ -92,40 +90,36 @@ return require('packer').startup(function(use)
         'saadparwaiz1/cmp_luasnip',
         'rafamadriz/friendly-snippets',
         'WhoIsSethDaniel/mason-tool-installer.nvim',
-        'nvimtools/none-ls.nvim',
+        'nvimtools/none-ls.nvim'
     }
 
-    use({
+    -- Snippet engine
+    use {
         "L3MON4D3/LuaSnip",
-        -- follow latest release.
-        tag = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-        -- install jsregexp (optional!:).
+        tag = "v2.*",
         run = "make install_jsregexp"
-    })
+    }
 
-    -- Fidget for LSP progress
+    -- LSP progress indicator
     use 'j-hui/fidget.nvim'
 
-    -- Autopairs for automatic closing of brackets, quotes, etc.
+    -- Autopairs
     use {
         'windwp/nvim-autopairs',
         event = 'InsertEnter',
-        config = function()
-            require('nvim-autopairs').setup {}
-        end
+        config = function() require('nvim-autopairs').setup {} end
     }
 
-    -- Surround plugin for manipulating surrounding characters
+    -- Surround manipulation
     use {
         'kylechui/nvim-surround',
         tag = '*',
-        config = function()
-            require('nvim-surround').setup {}
-        end
+        config = function() require('nvim-surround').setup {} end
     }
 
-    -- Automatically set up your configuration after cloning packer.nvim
+    -- Automatically set up configuration after cloning packer.nvim
     if packer_bootstrap then
         require('packer').sync()
     end
 end)
+
