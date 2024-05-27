@@ -41,8 +41,8 @@ return require('packer').startup(function(use)
 
     -- Fuzzy finder
     use {
-        'nvim-telescope/telescope.nvim',
-        requires = 'nvim-lua/plenary.nvim'
+        'nvim-telescope/telescope.nvim', branch = '0.1.x',
+        requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
     -- Undo tree visualizer
