@@ -27,11 +27,11 @@ return require('packer').startup(function(use)
     }
 
     -- Live server
---    use {
---        "aurum77/live-server.nvim",
---        run = function() require("live_server.util").install() end,
---        cmd = { "LiveServer", "LiveServerStart", "LiveServerStop" }
---    }
+    use {
+        "aurum77/live-server.nvim",
+        run = function() require("live_server.util").install() end,
+        cmd = { "LiveServer", "LiveServerStart", "LiveServerStop" }
+    }
 
     -- Status line
     use {
