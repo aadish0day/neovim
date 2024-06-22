@@ -200,10 +200,10 @@ _G.packer_plugins = {
     path = "/home/aadish/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
-  ["oil.nvim"] = {
+  ["obsidian.nvim"] = {
     loaded = true,
-    path = "/home/aadish/.local/share/nvim/site/pack/packer/start/oil.nvim",
-    url = "https://github.com/stevearc/oil.nvim"
+    path = "/home/aadish/.local/share/nvim/site/pack/packer/start/obsidian.nvim",
+    url = "https://github.com/epwalsh/obsidian.nvim"
   },
   ["onedark.nvim"] = {
     loaded = true,

@@ -119,8 +119,16 @@ return require('packer').startup(function(use)
         tag = '*',
     }
 
+
     use({
-        "stevearc/oil.nvim",
+        "epwalsh/obsidian.nvim",
+        tag = "*", -- recommended, use latest release instead of latest commit
+        requires = {
+            -- Required.
+            "nvim-lua/plenary.nvim",
+
+            -- see below for full list of optional dependencies 👇
+        },
     })
 
     -- Automatically set up configuration after cloning packer.nvim
