@@ -44,7 +44,9 @@ return require('packer').startup(function(use)
         'nvim-telescope/telescope.nvim', branch = '0.1.x',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
-
+    use {
+        'nvim-telescope/telescope-ui-select.nvim'
+    }
     -- Undo tree visualizer
     use 'mbbill/undotree'
 
@@ -119,6 +121,14 @@ return require('packer').startup(function(use)
         tag = '*',
     }
 
+    use 'David-Kunz/gen.nvim'
+
+    use {
+        'Zeioth/compiler.nvim',
+        requires = 'stevearc/overseer.nvim'
+    }
+
+    use 'mfussenegger/nvim-dap'
 
     -- Automatically set up configuration after cloning packer.nvim
     if packer_bootstrap then
