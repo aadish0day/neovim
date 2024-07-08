@@ -128,7 +128,8 @@ return require('packer').startup(function(use)
         requires = 'stevearc/overseer.nvim'
     }
 
-    use 'mfussenegger/nvim-dap'
+    use "stevearc/oil.nvim"
+
 
     -- Automatically set up configuration after cloning packer.nvim
     if packer_bootstrap then
