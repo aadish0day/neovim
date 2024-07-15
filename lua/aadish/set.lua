@@ -1,34 +1,30 @@
-vim.opt.nu             = true -- Enable line numbers
-vim.opt.relativenumber = true -- Display line numbers as relative to the line with the cursor
-vim.opt.mouse          = ""   -- Disable the mouse
+vim.opt.nu             = true                                 -- Enable line numbers.
+vim.opt.relativenumber = true                                 -- Enable relative line numbers.
+vim.opt.mouse          = ""                                   -- Disable mouse support.
 
--- Indentation Options
-vim.opt.tabstop        = 4  -- Number of spaces that a <Tab> in the file counts for
-vim.opt.softtabstop    = 4  -- Number of spaces that a <Tab> counts for while performing editing operations
-vim.opt.shiftwidth     = 4  -- Number of spaces to use for each step of (auto)indent
-vim.opt.expandtab      = true -- Convert tabs to spaces
+vim.opt.tabstop        = 4                                    -- Number of spaces that a <Tab> in the file counts for.
+vim.opt.softtabstop    = 4                                    -- Number of spaces that a <Tab> counts for while performing editing operations.
+vim.opt.shiftwidth     = 4                                    -- Number of spaces to use for each step of (auto)indent.
+vim.opt.expandtab      = true                                 -- Convert tabs to spaces.
 
--- Auto Indentation Options
-vim.opt.smartindent    = true -- Automatically insert indents in a smart way
+vim.opt.smartindent    = true                                 -- Enable smart indentation.
 
--- Swapfile, Backup and Undo Options
-vim.opt.swapfile       = false                                -- Do not use a swapfile for the buffer
-vim.opt.backup         = false                                -- Do not keep a backup file after saving
-vim.opt.undodir        = os.getenv("HOME") .. "/.vim/undodir" -- Directory where undo files are stored
-vim.opt.undofile       = true                                 -- Save undo history to an undo file
+vim.opt.swapfile       = false                                -- Disable swapfile.
+vim.opt.backup         = false                                -- Disable backup file.
+vim.opt.undodir        = os.getenv("HOME") .. "/.vim/undodir" -- Set undo directory.
+vim.opt.undofile       = true                                 -- Enable persistent undo.
 
--- Visual Options
-vim.opt.cursorline     = true -- Highlight the current line
-vim.opt.showmode       = false -- Do not display the mode (e.g., --INSERT--) in the command line area
+vim.opt.cursorline     = true                                 -- Highlight the current line.
+vim.opt.showmode       = false                                -- Disable mode display (like -- INSERT --).
 
--- Color and Scrolling Options
-vim.opt.termguicolors  = true -- Enable true color support
-vim.opt.scrolloff      = 8    -- Minimum number of lines to keep above and below the cursor
+vim.opt.termguicolors  = true                                 -- Enable 24-bit RGB color in the TUI.
+vim.opt.scrolloff      = 8                                    -- Keep 8 lines visible above and below the cursor.
 
--- Miscellaneous Options
-vim.opt.updatetime     = 50 -- Time in milliseconds to wait before triggering the plugin events
+vim.opt.updatetime     = 50                                   -- Faster completion (default is 4000 ms).
 
--- Sign Column and Spelling
-vim.opt.signcolumn     = 'yes'
-vim.opt.spelllang      = 'en_us'
-vim.opt.spell          = true
+vim.opt.signcolumn     = 'yes'                                -- Always show the sign column.
+vim.opt.spelllang      = 'en_us'                              -- Set spell check language to US English.
+vim.opt.spell          = true                                 -- Enable spell checking.
+
+vim.opt.hlsearch       = true                                 -- Highlight all matches of search pattern.
+
