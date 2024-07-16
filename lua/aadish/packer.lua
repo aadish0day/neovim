@@ -130,7 +130,8 @@ return require('packer').startup(function(use)
 
     use "stevearc/oil.nvim"
 
-
+    use { "akinsho/toggleterm.nvim", tag = '*'
+    }
     -- Automatically set up configuration after cloning packer.nvim
     if packer_bootstrap then
         require('packer').sync()
