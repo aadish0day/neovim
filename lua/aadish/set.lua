@@ -27,4 +27,3 @@ vim.opt.spelllang      = 'en_us'                              -- Set spell check
 vim.opt.spell          = true                                 -- Enable spell checking.
 
 vim.opt.hlsearch       = true                                 -- Highlight all matches of search pattern.
-

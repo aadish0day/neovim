@@ -9,5 +9,6 @@ git clone https://github.com/Aadishx07/neovim.git "${XDG_CONFIG_HOME:-$HOME/.con
 
 ```
 rm -rf ~/.config/nvim
+rm -rf ~/.local/state/nvim
 rm -rf ~/.local/share/nvim
 ```

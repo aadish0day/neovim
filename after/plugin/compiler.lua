@@ -18,4 +18,3 @@ require('compiler').setup {
 }
 
 vim.api.nvim_set_keymap('n', '<leader>r', "<cmd>CompilerOpen<cr>", { noremap = true, silent = true })
-
