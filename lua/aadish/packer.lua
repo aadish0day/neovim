@@ -134,6 +134,16 @@ return require('packer').startup(function(use)
     }
     use "tpope/vim-fugitive"
 
+    use {
+        'NeogitOrg/neogit',
+        requires = {
+            'nvim-lua/plenary.nvim',          -- required
+            'sindrets/diffview.nvim',         -- optional - Diff integration
+            'nvim-telescope/telescope.nvim',  -- optional
+            'ibhagwan/fzf-lua',               -- optional
+        },
+    }
+
     -- Automatically set up configuration after cloning packer.nvim
     if packer_bootstrap then
         require('packer').sync()
