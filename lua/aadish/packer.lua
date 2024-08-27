@@ -132,6 +132,7 @@ return require('packer').startup(function(use)
 
     use { "akinsho/toggleterm.nvim", tag = '*'
     }
+    use "tpope/vim-fugitive"
 
     use {
         'NeogitOrg/neogit',
