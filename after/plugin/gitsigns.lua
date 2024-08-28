@@ -15,8 +15,8 @@ require('gitsigns').setup {
         follow_files = true
     },
     auto_attach = true,
-    attach_to_untracked = true,
-    current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
+    attach_to_untracked = false,
+    current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`(It can be useful for huge codes. This helps me to identify who has changed the code on the line I am on "for now it false if you want the feature turn line 18 and 19 true".)
     current_line_blame_opts = {
         virt_text = true,
         virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
