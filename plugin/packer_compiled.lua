@@ -109,11 +109,6 @@ _G.packer_plugins = {
     path = "/home/aadish/.local/share/nvim/site/pack/packer/start/compiler.nvim",
     url = "https://github.com/Zeioth/compiler.nvim"
   },
-  ["diffview.nvim"] = {
-    loaded = true,
-    path = "/home/aadish/.local/share/nvim/site/pack/packer/start/diffview.nvim",
-    url = "https://github.com/sindrets/diffview.nvim"
-  },
   ["fidget.nvim"] = {
     loaded = true,
     path = "/home/aadish/.local/share/nvim/site/pack/packer/start/fidget.nvim",
@@ -123,11 +118,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/aadish/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
-  },
-  ["fzf-lua"] = {
-    loaded = true,
-    path = "/home/aadish/.local/share/nvim/site/pack/packer/start/fzf-lua",
-    url = "https://github.com/ibhagwan/fzf-lua"
   },
   ["gen.nvim"] = {
     loaded = true,
@@ -171,11 +161,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/aadish/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
-  },
-  neogit = {
-    loaded = true,
-    path = "/home/aadish/.local/share/nvim/site/pack/packer/start/neogit",
-    url = "https://github.com/NeogitOrg/neogit"
   },
   ["none-ls.nvim"] = {
     loaded = true,
