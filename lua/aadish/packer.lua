@@ -134,6 +134,8 @@ return require('packer').startup(function(use)
     }
     use "tpope/vim-fugitive"
 
+    use "sindrets/diffview.nvim"
+
     -- Automatically set up configuration after cloning packer.nvim
     if packer_bootstrap then
         require('packer').sync()
