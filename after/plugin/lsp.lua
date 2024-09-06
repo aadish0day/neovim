@@ -17,7 +17,7 @@ require("mason-tool-installer").setup({
 
 -- Set up mason-lspconfig
 require("mason-lspconfig").setup({
-    ensure_installed = { 'tsserver', 'lua_ls', 'html', 'cssls', 'jdtls', 'bashls', 'clangd' },
+    ensure_installed = { 'lua_ls', 'html', 'cssls', 'jdtls', 'bashls', 'clangd' }, -- Keep 'tsserver' here
     auto_install = true,
 })
 
