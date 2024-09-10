@@ -136,8 +136,8 @@ return require('packer').startup(function(use)
 
     use "sindrets/diffview.nvim"
 
+    -- use 'Exafunction/codeium.vim'
 
-    use 'Exafunction/codeium.vim'
 
     -- Automatically set up configuration after cloning packer.nvim
     if packer_bootstrap then
