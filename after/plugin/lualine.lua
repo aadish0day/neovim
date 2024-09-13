@@ -1,3 +1,5 @@
+local devicons = require('nvim-web-devicons')
+
 require('lualine').setup {
     options = {
         icons_enabled = true,
@@ -19,12 +21,14 @@ require('lualine').setup {
     },
     sections = {
         lualine_a = { 'mode' },
+
         lualine_b = { 'branch', 'diff', 'diagnostics' },
         lualine_c = {
-            {
-                'filename',
-                -- path = 1 -- 0 = just filename, 1 = relative path, 2 = absolute path
-            }
+            function()
+                local filename = vim.fn.expand('%:t')
+                local icon, _ = devicons.get_icon(filename, vim.fn.expand('%:e'))
+                return (icon or '') .. ' ' .. filename
+            end,
         },
         lualine_x = { 'encoding', 'fileformat', 'filetype' },
         lualine_y = { 'progress' },
@@ -34,10 +38,11 @@ require('lualine').setup {
         lualine_a = {},
         lualine_b = {},
         lualine_c = {
-            {
-                'filename',
-                -- path = 1 -- 0 = just filename, 1 = relative path, 2 = absolute path
-            }
+            function()
+                local filename = vim.fn.expand('%:t')
+                local icon, _ = devicons.get_icon(filename, vim.fn.expand('%:e'))
+                return (icon or '') .. ' ' .. filename
+            end,
         },
         lualine_x = { 'location' },
         lualine_y = {},
@@ -48,3 +53,4 @@ require('lualine').setup {
     inactive_winbar = {},
     extensions = {}
 }
+
