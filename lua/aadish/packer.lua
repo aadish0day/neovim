@@ -92,6 +92,7 @@ return require('packer').startup(function(use)
         'hrsh7th/nvim-cmp',
         'hrsh7th/cmp-nvim-lsp',
         'hrsh7th/cmp-buffer',
+        'hrsh7th/cmp-cmdline',
         'saadparwaiz1/cmp_luasnip',
         'rafamadriz/friendly-snippets',
         'WhoIsSethDaniel/mason-tool-installer.nvim',
