@@ -87,18 +87,26 @@ cmp.setup({
     },
 })
 
--- Configure command-line completion for `:`
+-- `:` cmdline setup.
 cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({
-        { name = 'cmdline' },
-        { name = 'path' },
-    })
+        { name = 'path' }
+    }, {
+            {
+                name = 'cmdline',
+                option = {
+                    ignore_cmds = { 'Man', '!' }
+                }
+            }
+        })
 })
 
--- Configure command-line completion for `/`
+-- `/` cmdline setup.
 cmp.setup.cmdline('/', {
-    sources = cmp.config.sources({
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
         { name = 'buffer' }
-    })
+    }
 })
 
