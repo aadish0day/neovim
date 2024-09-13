@@ -1,26 +1,20 @@
-local cmp = require 'cmp'
-local luasnip = require 'luasnip'
+local cmp = require('cmp')
+local luasnip = require('luasnip')
 
--- Loads VSCode-format snippets, excluding certain snippets if specified in the Neovim configuration
+-- Load VSCode-format snippets, excluding certain snippets if specified
 require("luasnip.loaders.from_vscode").lazy_load { exclude = vim.g.vscode_snippets_exclude or {} }
-
--- Loads VSCode-format snippets from a specified path
 require("luasnip.loaders.from_vscode").lazy_load { paths = "your path!" }
 require("luasnip.loaders.from_vscode").lazy_load { paths = vim.g.vscode_snippets_path or "" }
 
--- Loads SnipMate-format snippets using default paths
+-- Load SnipMate-format snippets using default paths
 require("luasnip.loaders.from_snipmate").load()
-
--- Loads SnipMate-format snippets from specified paths lazily
 require("luasnip.loaders.from_snipmate").lazy_load { paths = vim.g.snipmate_snippets_path or "" }
 
--- Loads Lua-format snippets using default paths
+-- Load Lua-format snippets using default paths
 require("luasnip.loaders.from_lua").load()
-
--- Lazily loads Lua-format snippets from specified paths
 require("luasnip.loaders.from_lua").lazy_load { paths = vim.g.lua_snippets_path or "" }
 
-
+-- Autocommand to unlink snippets when leaving insert mode
 vim.api.nvim_create_autocmd("InsertLeave", {
     callback = function()
         if require("luasnip").session.current_nodes[vim.api.nvim_get_current_buf()] and not require("luasnip").session.jump_active then
@@ -29,6 +23,7 @@ vim.api.nvim_create_autocmd("InsertLeave", {
     end,
 })
 
+-- Function to define border style
 local function border(hl_name)
     return {
         { "╭", hl_name },
@@ -42,6 +37,7 @@ local function border(hl_name)
     }
 end
 
+-- Configure nvim-cmp
 cmp.setup({
     snippet = {
         expand = function(args)
@@ -90,3 +86,19 @@ cmp.setup({
         }),
     },
 })
+
+-- Configure command-line completion for `:`
+cmp.setup.cmdline(':', {
+    sources = cmp.config.sources({
+        { name = 'cmdline' },
+        { name = 'path' },
+    })
+})
+
+-- Configure command-line completion for `/`
+cmp.setup.cmdline('/', {
+    sources = cmp.config.sources({
+        { name = 'buffer' }
+    })
+})
+
