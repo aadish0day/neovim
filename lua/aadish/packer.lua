@@ -52,6 +52,7 @@ return require('packer').startup(function(use)
 
     -- Theme
     use 'navarasu/onedark.nvim'
+    use 'folke/tokyonight.nvim'
 
     -- Buffer line
     use {

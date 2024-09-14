@@ -3,7 +3,7 @@ local devicons = require('nvim-web-devicons')
 require('lualine').setup {
     options = {
         icons_enabled = true,
-        theme = 'auto',
+        theme = 'tokyonight', -- auto , tokyonight
         component_separators = { left = '┃', right = '┃' },
         section_separators = { left = '', right = '' },
         disabled_filetypes = {
@@ -53,4 +53,3 @@ require('lualine').setup {
     inactive_winbar = {},
     extensions = {}
 }
-
