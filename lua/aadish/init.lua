@@ -1,6 +1,6 @@
-require("aadish.remap")
 require("aadish.set")
-require("aadish.packer").compile()
+require("aadish.remap")
+require("aadish.lazy_init")
 
 
 -- Auto command for highlighting yanked text
