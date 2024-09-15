@@ -1,64 +1,56 @@
 return {
+    -- Onedark Theme - Set as Default
     {
         'navarasu/onedark.nvim',
+        priority = 1000, -- Ensures the theme is loaded early
         config = function()
             require('onedark').setup {
                 -- Main options --
-                style = 'deep',               -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
-                transparent = true,           -- Show/hide background
-                term_colors = false,          -- Change terminal color as per the selected theme style
-                ending_tildes = false,        -- Show the end-of-buffer tildes. By default they are hidden
-                cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
+                style = 'deep',               -- Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer', 'light'
+                transparent = true,           -- Enables transparency
+                term_colors = true,           -- Terminal colors match the theme
+                ending_tildes = false,        -- Hides end-of-buffer tildes
+                cmp_itemkind_reverse = false, -- Default item order in completion menu
 
-                -- Change code style ---
-                -- Options are italic, bold, underline, none
-                -- You can configure multiple style with comma separated, For e.g., keywords = 'italic,bold'
+                -- Code style options --
                 code_style = {
-                    comments = 'italic',
-                    keywords = 'italic,bold',
-                    functions = 'none',
-                    strings = 'none',
-                    variables = 'none'
+                    comments = 'italic',      -- Italicize comments
+                    keywords = 'bold,italic', -- Bold and italic keywords
+                    functions = 'none',       -- No special style for functions
+                    strings = 'none',         -- No special style for strings
+                    variables = 'none'        -- No special style for variables
                 },
 
                 -- Lualine options --
                 lualine = {
-                    transparent = false, -- lualine center bar transparency
+                    transparent = true, -- Transparent lualine to match the theme
                 },
 
-                -- Custom Highlights --
-                colors = {},     -- Override default colors
-                highlights = {}, -- Override highlight groups
+                -- Custom Highlights (optional) --
+                colors = {},     -- Override default colors if needed
+                highlights = {}, -- Customize highlight groups if needed
 
-                -- Plugins Config --
+                -- Plugin specific options --
                 diagnostics = {
-                    darker = true,     -- darker colors for diagnostic
-                    undercurl = true,  -- use undercurl instead of underline for diagnostics
-                    background = true, -- use background color for virtual text
+                    darker = true,     -- Darker colors for diagnostics
+                    undercurl = true,  -- Use undercurl for diagnostics
+                    background = true, -- Background color for virtual text
                 },
             }
+
+            -- Load Onedark theme immediately
             require('onedark').load()
         end
     },
+
+    -- Tokyonight Theme - Available but not Loaded by Default
     {
         "folke/tokyonight.nvim",
         config = function()
             require("tokyonight").setup({
-                -- -- your configuration comes here
-                -- -- or leave it empty to use the default settings
-                -- style = "storm", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
-                -- transparent = true, -- Enable this to disable setting the background color
-                -- terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
-                -- styles = {
-                --     -- Style to be applied to different syntax groups
-                --     -- Value is any valid attr-list value for `:help nvim_set_hl`
-                --     comments = { italic = false },
-                --     keywords = { italic = false },
-                --     -- Background styles. Can be "dark", "transparent" or "normal"
-                --     sidebars = "dark", -- style for sidebars, see below
-                --     floats = "dark", -- style for floating windows
-                -- },
+                -- You can add configuration here if you want to use Tokyonight later
             })
-        end
+        end,
     },
 }
+
