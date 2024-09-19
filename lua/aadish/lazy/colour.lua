@@ -23,7 +23,7 @@ return {
 
                 -- Lualine options --
                 lualine = {
-                    transparent = true, -- Transparent lualine to match the theme
+                    transparent = false, -- Transparent lualine to match the theme
                 },
 
                 -- Custom Highlights (optional) --
@@ -42,15 +42,4 @@ return {
             require('onedark').load()
         end
     },
-
-    -- Tokyonight Theme - Available but not Loaded by Default
-    {
-        "folke/tokyonight.nvim",
-        config = function()
-            require("tokyonight").setup({
-                -- You can add configuration here if you want to use Tokyonight later
-            })
-        end,
-    },
 }
-
