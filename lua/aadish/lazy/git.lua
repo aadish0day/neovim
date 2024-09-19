@@ -50,4 +50,13 @@ return {
             vim.keymap.set('n', '<leader>gs', vim.cmd.Git)
         end,
     },
+    {
+        'sindrets/diffview.nvim',
+        requires = 'nvim-lua/plenary.nvim',
+        config = function()
+            require('diffview').setup({
+                -- Configuration options (if any)
+            })
+        end,
+    },
 }
