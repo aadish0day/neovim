@@ -19,7 +19,7 @@ return {
 
             -- Disable indent-blankline for nvim-tree
             vim.api.nvim_create_autocmd("FileType", {
-                pattern = "NvimTree",
+                pattern = { "NvimTree", "undotree", "mason" },
                 callback = function()
                     vim.b.indent_blankline_enabled = false
                 end,
@@ -56,9 +56,9 @@ return {
             -- Set color for the scope symbol
             vim.api.nvim_set_hl(0, 'MiniIndentscopeSymbol', { fg = "#e06c75" })
 
-            -- Disable mini.indentscope for nvim-tree
+            -- Disable mini.indentscope for specific filetypes
             vim.api.nvim_create_autocmd("FileType", {
-                pattern = "NvimTree",
+                pattern = { "NvimTree", "undotree", "mason" },
                 callback = function()
                     vim.b.miniindentscope_disable = true
                 end,
