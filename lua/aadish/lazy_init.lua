@@ -15,3 +15,5 @@ require("lazy").setup({
     spec = "aadish.lazy",
     change_detection = { notify = false }
 })
+
+vim.keymap.set("n", "<leader>l", ":Lazy<CR>")
