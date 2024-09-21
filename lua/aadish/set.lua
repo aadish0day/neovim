@@ -27,3 +27,4 @@ vim.opt.spelllang = 'en_us'                            -- Set spell check langua
 vim.opt.spell = true                                   -- Enable spell checking.
 
 vim.opt.hlsearch = true                                -- Highlight all matches of search pattern.
+vim.opt.incsearch = true                               -- Show search matches as you type.
