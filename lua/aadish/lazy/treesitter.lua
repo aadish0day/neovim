@@ -8,7 +8,7 @@ return {
                 ensure_installed = { "c", "lua", "html", "java", "javascript", "bash" },
 
                 -- Install parsers synchronously (only applied to `ensure_installed`)
-                sync_install = true,
+                sync_install = false,
 
                 -- Automatically install missing parsers when entering buffer
                 auto_install = true,
@@ -29,6 +29,8 @@ return {
                 -- Specify parsers to ignore during installation (empty if none)
                 ignore_install = {}
             }
+            -- Silence Treesitter messages on the first boot
+            vim.g.treesitter_silence_on_first_boot = true
         end
     },
 }
