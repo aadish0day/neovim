@@ -27,6 +27,7 @@ return {
                     },
                 },
             })
+            vim.keymap.set('n', '<leader>m', ':Mason<CR>', { silent = true })
 
             -- Set up mason-tool-installer
             require("mason-tool-installer").setup({
