@@ -4,18 +4,20 @@ return {
         version = "*",
         dependencies = 'nvim-tree/nvim-web-devicons',
         config = function()
-            -- Ensure true color support is enabled
             vim.opt.termguicolors = true
 
             -- Setup bufferline
             require("bufferline").setup {
                 options = {
-                    offsets = { {
+                    offsets = {
                         filetype = "NvimTree",
                         text = "File Explorer",
                         highlight = "Directory",
-                        separator = true -- Enable the default separator, or set your own character
-                    } }
+                        separator = true, -- Enable the default separator, or set your own character
+
+                        -- Display buffer numbers
+                        numbers = "ordinal", -- Change to "ordinal" if you want numbers
+                    }
                 }
             }
             -- Enable navigation through buffers
@@ -25,5 +27,5 @@ return {
             -- Close the current buffer
             vim.api.nvim_set_keymap('n', '<leader>q', ':bd<CR>', { noremap = true, silent = true })
         end
-    }
+    },
 }
