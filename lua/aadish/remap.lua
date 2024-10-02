@@ -33,20 +33,27 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
 -- Keybinding for saving the file with Ctrl+s in normal, insert, and visual modes
-vim.keymap.set('n', '<C-s>', '<cmd>w<CR>', { silent = true })
-vim.keymap.set('i', '<C-s>', '<C-[><cmd>w<CR><C-o>', { silent = true })
-vim.keymap.set('v', '<C-s>', '<C-c><cmd>w<CR>', { silent = true })
+vim.keymap.set("n", "<C-s>", "<cmd>w<CR>", { silent = true })
+vim.keymap.set("i", "<C-s>", "<C-[><cmd>w<CR><C-o>", { silent = true })
+vim.keymap.set("v", "<C-s>", "<C-c><cmd>w<CR>", { silent = true })
 
 vim.keymap.set("n", "<leader>sa", "<cmd>wa<CR>", { silent = true })
 
 -- Disable Ex mode mapping
 vim.keymap.set("n", "Q", "<nop>")
 
--- LSP formatting shortcut
+-- LSP and conform formatting shortcut
 vim.keymap.set("n", "<leader>f", function()
-    local buf_format = vim.lsp.buf.format or vim.lsp.buf.formatting
-    if buf_format then
-        buf_format()
+    -- Check if conform can format the current buffer
+    local ok, conform = pcall(require, "conform")
+    if ok and conform then
+        conform.format()
+    else
+        -- Fallback to LSP formatting if conform is not available
+        local buf_format = vim.lsp.buf.format or vim.lsp.buf.formatting
+        if buf_format then
+            buf_format()
+        end
     end
 end)
 
@@ -62,4 +69,4 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 -- Make file executable
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
