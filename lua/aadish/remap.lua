@@ -44,16 +44,9 @@ vim.keymap.set("n", "Q", "<nop>")
 
 -- LSP and conform formatting shortcut
 vim.keymap.set("n", "<leader>f", function()
-    -- Check if conform can format the current buffer
-    local ok, conform = pcall(require, "conform")
-    if ok and conform then
-        conform.format()
-    else
-        -- Fallback to LSP formatting if conform is not available
-        local buf_format = vim.lsp.buf.format or vim.lsp.buf.formatting
-        if buf_format then
-            buf_format()
-        end
+    local buf_format = vim.lsp.buf.format or vim.lsp.buf.formatting
+    if buf_format then
+        buf_format()
     end
 end)
 

@@ -30,14 +30,61 @@ return {
 
 			-- Mason-tool-installer setup
 			require("mason-tool-installer").setup({
-				ensure_installed = { "shfmt", "lua_ls", "html", "cssls", "jdtls", "bashls", "clangd", "ts_ls" },
+				ensure_installed = {
+					"shfmt",
+					"lua_ls",
+					"html",
+					"cssls",
+					"jdtls",
+					"bashls",
+					"clangd",
+					"ts_ls",
+					"stylua",
+				},
 				auto_update = true,
 				run_on_start = true,
 				start_delay = 3000,
 				debounce_hours = 5,
 			})
 
-			require("fidget").setup({})
+			require("fidget").setup({
+				text = {
+					spinner = "dots", -- You can choose from 'dots', 'line', 'dots_pulse', 'line_pulse', 'moon', etc.
+					done = "✔️", -- Character displayed when the task is done
+					commenced = "Started", -- Message displayed when a task starts
+					completed = "Completed", -- Message displayed when a task completes
+				},
+				align = {
+					bottom = true, -- Align the fidget UI to the bottom of the window
+					right = true, -- Align the fidget UI to the right of the window
+				},
+				timer = {
+					spinner_rate = 125, -- How fast the spinner updates (in milliseconds)
+					fidget_decay = 2000, -- Time in milliseconds to wait before fading out the fidget
+				},
+				window = {
+					blend = 0, -- Transparency level of the fidget window
+				},
+				fmt = {
+					leftpad = true, -- Pad the messages on the left
+					max_width = 30, -- Set a maximum width for the messages
+				},
+				--- Controls when fidget should show
+				-- These are all optional
+				-- 'LspAttach' will show fidget when LSP attaches to a buffer
+				-- 'LspProgress' will show fidget during LSP operations
+				-- 'InsertEnter' will show fidget when entering insert mode
+				-- 'InsertLeave' will hide fidget when leaving insert mode
+				-- 'DiagnosticChanged' will show fidget when diagnostics change
+				-- These can be set to true or false
+				show = {
+					LspAttach = true,
+					LspProgress = true,
+					InsertEnter = false,
+					InsertLeave = true,
+					DiagnosticChanged = true,
+				},
+			})
 
 			-- LSP setup
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
