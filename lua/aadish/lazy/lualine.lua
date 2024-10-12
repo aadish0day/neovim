@@ -25,10 +25,8 @@ return {
                     lualine_c = {
                         function()
                             local relpath = vim.fn.expand("%:.")
-                            local icon, icon_color = devicons.get_icon(relpath, vim.fn.expand("%:e"))
-                            return (icon and icon_color)
-                                and string.format("%%#%s#%s %%#Normal#%s", icon_color, icon, relpath)
-                                or relpath
+                            local icon = devicons.get_icon(relpath, vim.fn.expand("%:e"))
+                            return icon and string.format("%s %s", icon, relpath) or relpath
                         end,
                     },
                     lualine_x = {
@@ -56,10 +54,8 @@ return {
                     lualine_c = {
                         function()
                             local relpath = vim.fn.expand("%:.")
-                            local icon, icon_color = devicons.get_icon(relpath, vim.fn.expand("%:e"))
-                            return (icon and icon_color)
-                                and string.format("%%#%s#%s %%#Normal#%s", icon_color, icon, relpath)
-                                or relpath
+                            local icon = devicons.get_icon(relpath, vim.fn.expand("%:e"))
+                            return icon and string.format("%s %s", icon, relpath) or relpath
                         end,
                     },
                     lualine_x = { "location" },
