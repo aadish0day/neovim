@@ -13,7 +13,6 @@ return {
                     "javascript",
                     "bash",
                     "gitcommit",
-                    "gitrebase",
                     "diff",
                     "markdown",
                 },
