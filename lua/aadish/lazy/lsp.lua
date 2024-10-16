@@ -14,6 +14,7 @@ return {
             "saadparwaiz1/cmp_luasnip",
             "rafamadriz/friendly-snippets",
             "j-hui/fidget.nvim",
+            "onsails/lspkind-nvim",
         },
         config = function()
             -- Mason setup
@@ -126,6 +127,7 @@ return {
             -- Snippet and completion setup
             local cmp = require("cmp")
             local luasnip = require("luasnip")
+            local lspkind = require("lspkind") -- Added this line
 
             require("luasnip.loaders.from_vscode").lazy_load()
             require("luasnip.loaders.from_snipmate").load()
@@ -170,6 +172,13 @@ return {
                 window = {
                     completion = cmp.config.window.bordered(),
                     documentation = cmp.config.window.bordered(),
+                },
+                formatting = {
+                    format = lspkind.cmp_format({
+                        mode = "symbol_text",
+                        maxwidth = 50,
+                        ellipsis_char = "...",
+                    }),
                 },
             })
 
