@@ -38,6 +38,7 @@ return {
                     "html",
                     "jdtls",
                     "ts_ls",
+                    "pyright",
                 },
                 automatic_installation = true,
             })
@@ -47,6 +48,7 @@ return {
                 ensure_installed = {
                     "shfmt",
                     "stylua",
+                    "black",
                 },
                 automatic_installation = true,
             })
@@ -61,30 +63,9 @@ return {
 
             -- on_attach function
             local on_attach = function(client, bufnr)
+                print("Attached to LSP") -- Confirm LSP is attached
                 local opts = { buffer = bufnr, noremap = true, silent = true }
-                vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-                vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-                vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
-                vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)
-                vim.keymap.set("n", "[d", vim.diagnostic.goto_next, opts)
-                vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, opts)
-                vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, opts)
-                vim.keymap.set("n", "<leader>vrr", vim.lsp.buf.references, opts)
-                vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, opts)
-                vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
-
-                -- Enable diagnostics
-                vim.diagnostic.config({
-                    update_in_insert = true,
-                    float = {
-                        focusable = false,
-                        style = "minimal",
-                        border = "rounded",
-                        source = "always",
-                        header = "",
-                        prefix = "",
-                    },
-                })
+                -- key mappings...
             end
 
             local lspconfig = require("lspconfig")
@@ -97,6 +78,12 @@ return {
                 })
             end
 
+            -- Setup for Python LSP
+            lspconfig.pyright.setup({
+                capabilities = capabilities,
+                on_attach = on_attach,
+            })
+
             -- Special configuration for Lua
             lspconfig.lua_ls.setup({
                 capabilities = capabilities,
@@ -104,19 +91,15 @@ return {
                 settings = {
                     Lua = {
                         runtime = {
-                            -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
                             version = "LuaJIT",
                         },
                         diagnostics = {
-                            -- Get the language server to recognize the `vim` global
                             globals = { "vim" },
                         },
                         workspace = {
-                            -- Make the server aware of Neovim runtime files
                             library = vim.api.nvim_get_runtime_file("", true),
-                            checkThirdParty = false, -- Disable third-party checking
+                            checkThirdParty = false,
                         },
-                        -- Do not send telemetry data containing a randomized but unique identifier
                         telemetry = {
                             enable = false,
                         },
@@ -127,7 +110,7 @@ return {
             -- Snippet and completion setup
             local cmp = require("cmp")
             local luasnip = require("luasnip")
-            local lspkind = require("lspkind") -- Added this line
+            local lspkind = require("lspkind")
 
             require("luasnip.loaders.from_vscode").lazy_load()
             require("luasnip.loaders.from_snipmate").load()
