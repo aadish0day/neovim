@@ -2,6 +2,8 @@ vim.opt.nu = true                                      -- Enable line numbers.
 vim.opt.relativenumber = true                          -- Enable relative line numbers.
 vim.opt.mouse = ""                                     -- Disable mouse support.
 
+vim.g.have_nerd_font = true
+
 vim.opt.tabstop = 4                                    -- Number of spaces that a <Tab> in the file counts for.
 vim.opt.softtabstop = 4                                -- Number of spaces that a <Tab> counts for while performing editing operations.
 vim.opt.shiftwidth = 4                                 -- Number of spaces to use for each step of (auto)indent.

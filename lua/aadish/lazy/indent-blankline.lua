@@ -44,7 +44,7 @@ return {
 
             -- Disable mini.indentscope for specific filetypes
             vim.api.nvim_create_autocmd("FileType", {
-                pattern = { "NvimTree", "undotree", "mason", "lazy" },
+                pattern = { "NvimTree", "undotree", "mason", "lazy", "oil" }, -- Assuming 'oil' is the filetype set by oil.nvim
                 callback = function()
                     vim.b.miniindentscope_disable = true
                 end,
@@ -52,3 +52,4 @@ return {
         end,
     },
 }
+
