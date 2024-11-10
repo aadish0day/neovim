@@ -1,5 +1,10 @@
 return {
     {
+        "L3MON4D3/LuaSnip",
+        version = "v2.*",
+        build = "make install_jsregexp",
+    },
+    {
         "neovim/nvim-lspconfig",
         dependencies = {
             "williamboman/mason.nvim",
@@ -199,11 +204,16 @@ return {
                     prefix = "",
                 },
             })
+
+            -- Autopairs setup for nvim-cmp
+            -- lazy/aadish/lsp.lua
+
+            -- Load the cmp and cmp_autopairs modules
+            local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+            local cmp = require("cmp")
+
+            -- Link cmp with nvim-autopairs
+            cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
         end,
-    },
-    {
-        "L3MON4D3/LuaSnip",
-        version = "v2.*",
-        build = "make install_jsregexp",
     },
 }
