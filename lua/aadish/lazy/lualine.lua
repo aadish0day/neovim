@@ -1,72 +1,69 @@
 return {
-    {
-        "nvim-lualine/lualine.nvim",
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-        config = function()
-            local devicons = require("nvim-web-devicons")
-
-            require("lualine").setup({
-                options = {
-                    icons_enabled = true,
-                    theme = "tokyonight",
-                    component_separators = { left = "|", right = "|" },
-                    section_separators = { left = "", right = "" },
-                    disabled_filetypes = {
-                        statusline = {},
-                        winbar = {},
-                    },
-                    ignore_focus = {},
-                    always_divide_middle = true,
-                    globalstatus = false,
+    "nvim-lualine/lualine.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+        local devicons = require("nvim-web-devicons")
+        require("lualine").setup({
+            options = {
+                icons_enabled = true,
+                theme = "tokyonight",
+                component_separators = { left = "|", right = "|" },
+                section_separators = { left = "", right = "" },
+                disabled_filetypes = {
+                    statusline = {},
+                    winbar = {},
                 },
-                sections = {
-                    lualine_a = { "mode" },
-                    lualine_b = { "branch", "diff", "diagnostics" },
-                    lualine_c = {
-                        function()
-                            local relpath = vim.fn.expand("%:.")
-                            local icon = devicons.get_icon(relpath, vim.fn.expand("%:e"))
-                            return icon and string.format("%s %s", icon, relpath) or relpath
-                        end,
-                    },
-                    lualine_x = {
-                        "fileformat",
-                        "filetype",
-                        function()
-                            local clients = vim.lsp.get_active_clients({ bufnr = 0 })
-                            if #clients > 0 then
-                                local lsp_names = {}
-                                for _, client in ipairs(clients) do
-                                    table.insert(lsp_names, client.name)
-                                end
-                                return " LSP: " .. table.concat(lsp_names, ", ")
-                            else
-                                return ""
+                ignore_focus = {},
+                always_divide_middle = true,
+                globalstatus = false,
+            },
+            sections = {
+                lualine_a = { "mode" },
+                lualine_b = { "branch", "diff", "diagnostics" },
+                lualine_c = {
+                    function()
+                        local relpath = vim.fn.expand("%:.")
+                        local icon = devicons.get_icon(relpath, vim.fn.expand("%:e"))
+                        return icon and string.format("%s %s", icon, relpath) or relpath
+                    end,
+                },
+                lualine_x = {
+                    "fileformat",
+                    "filetype",
+                    function()
+                        local clients = vim.lsp.get_active_clients({ bufnr = 0 })
+                        if #clients > 0 then
+                            local lsp_names = {}
+                            for _, client in ipairs(clients) do
+                                table.insert(lsp_names, client.name)
                             end
-                        end,
-                    },
-                    lualine_y = { "progress" },
-                    lualine_z = { "location" },
+                            return " LSP: " .. table.concat(lsp_names, ", ")
+                        else
+                            return ""
+                        end
+                    end,
                 },
-                inactive_sections = {
-                    lualine_a = {},
-                    lualine_b = {},
-                    lualine_c = {
-                        function()
-                            local relpath = vim.fn.expand("%:.")
-                            local icon = devicons.get_icon(relpath, vim.fn.expand("%:e"))
-                            return icon and string.format("%s %s", icon, relpath) or relpath
-                        end,
-                    },
-                    lualine_x = { "location" },
-                    lualine_y = {},
-                    lualine_z = {},
+                lualine_y = { "progress" },
+                lualine_z = { "location" },
+            },
+            inactive_sections = {
+                lualine_a = {},
+                lualine_b = {},
+                lualine_c = {
+                    function()
+                        local relpath = vim.fn.expand("%:.")
+                        local icon = devicons.get_icon(relpath, vim.fn.expand("%:e"))
+                        return icon and string.format("%s %s", icon, relpath) or relpath
+                    end,
                 },
-                tabline = {},
-                winbar = {},
-                inactive_winbar = {},
-                extensions = {},
-            })
-        end,
-    },
+                lualine_x = { "location" },
+                lualine_y = {},
+                lualine_z = {},
+            },
+            tabline = {},
+            winbar = {},
+            inactive_winbar = {},
+            extensions = {},
+        })
+    end,
 }
