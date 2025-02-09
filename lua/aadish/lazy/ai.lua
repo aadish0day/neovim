@@ -36,14 +36,24 @@ return {
 			vim.keymap.set({ "n", "v" }, "<leader>]", ":Gen<CR>")
 		end,
 	},
-	{
-		"Exafunction/codeium.vim",
-		config = function()
-			vim.keymap.set("i", "<c-x>", function()
-				return vim.fn["codeium#Clear"]()
-			end, { expr = true, silent = true })
+	-- {
+	-- 	"Exafunction/codeium.vim",
+	-- 	config = function()
+	-- 		vim.keymap.set("i", "<c-x>", function()
+	-- 			return vim.fn["codeium#Clear"]()
+	-- 		end, { expr = true, silent = true })
+	--
+	-- 		vim.g.codeium_enabled = false
+	-- 	end,
+	-- },
+    {
+        "github/copilot.vim",
+        config = function()
+            -- Enable Copilot by default
+            vim.g.copilot_enabled = true
 
-			vim.g.codeium_enabled = false
-		end,
-	},
+            -- Define keybindings (optional)
+            vim.keymap.set("i", "<C-l>", 'copilot#Accept("<CR>")', { expr = true, silent = true, script = true, replace_keycodes = false })
+        end,
+    },
 }
