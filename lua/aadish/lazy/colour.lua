@@ -46,6 +46,8 @@ return {
     {
         "folke/tokyonight.nvim",
         lazy = false,
+        priority = 1000, -- Ensures the theme is loaded early
+
         config = function()
             require("tokyonight").setup({
                 style = "moon", -- The theme comes in four styles: `storm`, `night`, `moon`, and `day`
@@ -53,4 +55,3 @@ return {
         end,
     },
 }
-
