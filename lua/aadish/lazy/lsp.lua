@@ -44,6 +44,8 @@ return {
                     "jdtls",
                     "ts_ls",
                     "pyright",
+                    "tinymist",
+                    "marksman",
                 },
                 automatic_installation = true,
             })
@@ -74,7 +76,7 @@ return {
             end
 
             local lspconfig = require("lspconfig")
-            local servers = { "html", "cssls", "ts_ls", "bashls", "clangd" }
+            local servers = { "html", "cssls", "ts_ls", "bashls", "clangd", "marksman" }
 
             for _, server in ipairs(servers) do
                 lspconfig[server].setup({
@@ -87,6 +89,15 @@ return {
             lspconfig.pyright.setup({
                 capabilities = capabilities,
                 on_attach = on_attach,
+            })
+
+            -- Setup for Typst LSP using tinymist
+            lspconfig.tinymist.setup({
+                capabilities = capabilities,
+                on_attach = on_attach,
+                cmd = { "tinymist" },
+                filetypes = { "typst" },
+                root_dir = lspconfig.util.root_pattern(".git", "."),
             })
 
             -- Special configuration for Lua
@@ -215,23 +226,22 @@ return {
             cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
             -- LSP key mapping configuration
-            vim.api.nvim_create_autocmd('LspAttach', {
-                desc = 'LSP actions',
+            vim.api.nvim_create_autocmd("LspAttach", {
+                desc = "LSP actions",
                 callback = function(event)
-                    local opts = {buffer = event.buf}
-                    vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
-                    vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
-                    vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
-                    vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
-                    vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
-                    vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
-                    vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
-                    vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-                    vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
-                    vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+                    local opts = { buffer = event.buf }
+                    vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
+                    vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
+                    vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
+                    vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>", opts)
+                    vim.keymap.set("n", "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>", opts)
+                    vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>", opts)
+                    vim.keymap.set("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
+                    vim.keymap.set("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
+                    vim.keymap.set({ "n", "x" }, "<F3>", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
+                    vim.keymap.set("n", "<F4>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
                 end,
             })
         end,
     },
 }
-
