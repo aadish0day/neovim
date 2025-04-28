@@ -2,32 +2,30 @@
 
 return {
     {
-        "vimwiki/vimwiki",
-        lazy = false,
-        init = function()
-            -- Explicitly set wiki to use Markdown and .md extension
-            vim.g.vimwiki_list = {
-                {
-                    path = "~/vimwiki/",
-                    syntax = "markdown",
-                    ext = ".md",
-                },
-            }
-
-            -- Force Markdown syntax
-            vim.g.vimwiki_ext = ".md"
-            vim.g.vimwiki_global_ext = 0 -- Disable global wiki extension
-        end,
-        config = function()
-            -- Additional Vimwiki configurations
-            vim.g.vimwiki_markdown_link_ext = 1 -- Include file extension in links
-            vim.g.vimwiki_auto_header = 1 -- Automatically create header for new pages
-        end,
-        keys = {
-            { "<leader>ww", "<Plug>VimwikiIndex",      desc = "Open Vimwiki Index" },
-            { "<leader>wd", "<Plug>VimwikiDeleteLink", desc = "Delete Wiki Link" },
-            { "<leader>wr", "<Plug>VimwikiRenameLink", desc = "Rename Wiki Link" },
+        "epwalsh/obsidian.nvim",
+        version = "*", -- recommended, use latest release instead of latest commit
+        lazy = true,
+        ft = "markdown",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
         },
+
+        config = function()
+            require("obsidian").setup({
+                dir = "~/Documents/Obsidian/",
+
+                disable_frontmatter = true, -- Add this line to disable frontmatter
+
+                completion = {
+                    nvim_cmp = true,
+                    min_chars = 2,
+                },
+
+                ui = {
+                    enable = true,
+                },
+            })
+        end,
     },
     {
         "iamcco/markdown-preview.nvim",

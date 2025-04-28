@@ -30,3 +30,5 @@ vim.opt.spell = true                                   -- Enable spell checking.
 
 vim.opt.hlsearch = true                                -- Highlight all matches of search pattern.
 vim.opt.incsearch = true                               -- Show search matches as you type.
+
+vim.opt.conceallevel = 2                             -- In your options.lua or similar file
