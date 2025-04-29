@@ -45,7 +45,6 @@ return {
                     "ts_ls",
                     "pyright",
                     "tinymist",
-                    "marksman",
                 },
                 automatic_installation = true,
             })
