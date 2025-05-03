@@ -75,7 +75,7 @@ return {
             end
 
             local lspconfig = require("lspconfig")
-            local servers = { "html", "cssls", "ts_ls", "bashls", "clangd", "marksman" }
+            local servers = { "html", "cssls", "ts_ls", "bashls", "clangd", }
 
             for _, server in ipairs(servers) do
                 lspconfig[server].setup({
@@ -83,6 +83,14 @@ return {
                     on_attach = on_attach,
                 })
             end
+
+            -- Setup for Java using jdtls
+            lspconfig.jdtls.setup({
+                capabilities = capabilities,
+                on_attach = on_attach,
+                cmd = { "jdtls" },
+                root_dir = lspconfig.util.root_pattern("gradlew", "mvnw", ".git"),
+            })
 
             -- Setup for Python LSP
             lspconfig.pyright.setup({
