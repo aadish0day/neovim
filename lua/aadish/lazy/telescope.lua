@@ -21,6 +21,10 @@ return {
                 },
                 pickers = {
                     -- Default configuration for builtin pickers goes here
+                    buffers = {
+                        sort_mru = true, -- Most recently used first
+                        ignore_current_buffer = true, -- Optional: hide current buffer
+                    },
                 },
                 extensions = {
                     ["ui-select"] = {
@@ -49,6 +53,7 @@ return {
             vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
             vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
             vim.keymap.set("n", "<C-p>", builtin.git_files, {})
+            vim.keymap.set("n", "<leader>fb", require("telescope.builtin").buffers, { desc = "Fuzzy find buffers" })
 
             vim.keymap.set("n", "<leader>/", function()
                 builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
