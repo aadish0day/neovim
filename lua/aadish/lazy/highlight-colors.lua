@@ -58,39 +58,39 @@ return {
             })
         end,
     },
-    {
-        "ziontee113/color-picker.nvim",
-        config = function()
-            local opts = { noremap = true, silent = true }
-
-            vim.keymap.set("n", "<leader>cp", "<cmd>PickColor<cr>", opts)
-            -- vim.keymap.set("i", "<leader>cp", "<cmd>PickColorInsert<cr>", opts)
-
-            require("color-picker").setup({
-                icons = { "ﱢ", "" },
-                -- icons = { "ﮊ", "" },
-                -- icons = { "", "ﰕ" },
-                -- icons = { "", "" },
-                -- icons = { "", "" },
-                -- icons = { "ﱢ", "" },
-                border = "rounded",
-                keymap = {
-                    U = "<Plug>ColorPickerSlider5Decrease",
-                    O = "<Plug>ColorPickerSlider5Increase",
-                },
-                background_highlight_group = "Normal",
-                border_highlight_group = "FloatBorder",
-                text_highlight_group = "Normal",
-            })
-
-            vim.cmd([[hi FloatBorder guibg=NONE]])
-            vim.cmd([[hi FloatBorder guibg=NONE]]) -- if you don't want weird border background colors around the popup.
-        end,
-    },
-    {
-        "vi013t/easycolor.nvim",
-        dependencies = { "stevearc/dressing.nvim" }, -- Optional, but provides better UI for editing the formatting template
-        opts = {},
-        keys = { { "<leader>b", "<cmd>EasyColor<cr>", desc = "Color Picker" } },
-    },
+    -- {
+    --     "ziontee113/color-picker.nvim",
+    --     config = function()
+    --         local opts = { noremap = true, silent = true }
+    --
+    --         vim.keymap.set("n", "<leader>cp", "<cmd>PickColor<cr>", opts)
+    --         -- vim.keymap.set("i", "<leader>cp", "<cmd>PickColorInsert<cr>", opts)
+    --
+    --         require("color-picker").setup({
+    --             icons = { "ﱢ", "" },
+    --             -- icons = { "ﮊ", "" },
+    --             -- icons = { "", "ﰕ" },
+    --             -- icons = { "", "" },
+    --             -- icons = { "", "" },
+    --             -- icons = { "ﱢ", "" },
+    --             border = "rounded",
+    --             keymap = {
+    --                 U = "<Plug>ColorPickerSlider5Decrease",
+    --                 O = "<Plug>ColorPickerSlider5Increase",
+    --             },
+    --             background_highlight_group = "Normal",
+    --             border_highlight_group = "FloatBorder",
+    --             text_highlight_group = "Normal",
+    --         })
+    --
+    --         vim.cmd([[hi FloatBorder guibg=NONE]])
+    --         vim.cmd([[hi FloatBorder guibg=NONE]]) -- if you don't want weird border background colors around the popup.
+    --     end,
+    -- },
+    -- {
+    --     "vi013t/easycolor.nvim",
+    --     dependencies = { "stevearc/dressing.nvim" }, -- Optional, but provides better UI for editing the formatting template
+    --     opts = {},
+    --     keys = { { "<leader>b", "<cmd>EasyColor<cr>", desc = "Color Picker" } },
+    -- },
 }
