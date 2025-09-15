@@ -44,7 +44,6 @@ return {
                     "jdtls",
                     "ts_ls",
                     "pyright",
-                    "tinymist",
                 },
                 automatic_installation = true,
             })
