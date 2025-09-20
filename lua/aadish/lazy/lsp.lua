@@ -73,41 +73,41 @@ return {
                 -- key mappings...
             end
 
-            local lspconfig = require("lspconfig")
-            local servers = { "html", "cssls", "ts_ls", "bashls", "clangd", }
+            -- Use the new vim.lsp.config API instead of require('lspconfig')
+            local servers = { "html", "cssls", "ts_ls", "bashls", "clangd" }
 
             for _, server in ipairs(servers) do
-                lspconfig[server].setup({
+                vim.lsp.config[server] = {
                     capabilities = capabilities,
                     on_attach = on_attach,
-                })
+                }
             end
 
             -- Setup for Java using jdtls
-            lspconfig.jdtls.setup({
+            vim.lsp.config.jdtls = {
                 capabilities = capabilities,
                 on_attach = on_attach,
                 cmd = { "jdtls" },
-                root_dir = lspconfig.util.root_pattern("gradlew", "mvnw", ".git"),
-            })
+                root_dir = vim.fs.root(0, { "gradlew", "mvnw", ".git" }),
+            }
 
             -- Setup for Python LSP
-            lspconfig.pyright.setup({
+            vim.lsp.config.pyright = {
                 capabilities = capabilities,
                 on_attach = on_attach,
-            })
+            }
 
             -- Setup for Typst LSP using tinymist
-            lspconfig.tinymist.setup({
+            vim.lsp.config.tinymist = {
                 capabilities = capabilities,
                 on_attach = on_attach,
                 cmd = { "tinymist" },
                 filetypes = { "typst" },
-                root_dir = lspconfig.util.root_pattern(".git", "."),
-            })
+                root_dir = vim.fs.root(0, { ".git", "." }),
+            }
 
             -- Special configuration for Lua
-            lspconfig.lua_ls.setup({
+            vim.lsp.config.lua_ls = {
                 capabilities = capabilities,
                 on_attach = on_attach,
                 settings = {
@@ -127,7 +127,7 @@ return {
                         },
                     },
                 },
-            })
+            }
 
             -- Snippet and completion setup
             local cmp = require("cmp")
@@ -221,10 +221,8 @@ return {
                     },
                 },
             })
-            -- Autopairs setup for nvim-cmp
-            -- lazy/aadish/lsp.lua
 
-            -- Load the cmp and cmp_autopairs modules
+            -- Autopairs setup for nvim-cmp
             local cmp_autopairs = require("nvim-autopairs.completion.cmp")
             local cmp = require("cmp")
 
