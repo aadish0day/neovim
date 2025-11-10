@@ -44,6 +44,7 @@ return {
                     "jdtls",
                     "ts_ls",
                     "pyright",
+                    "tinymist", -- Add Typst LSP (recommended)
                 },
                 automatic_installation = true,
             })
@@ -54,6 +55,7 @@ return {
                     "shfmt",
                     "stylua",
                     "black",
+                    "typstyle", -- Add Typst formatter
                 },
                 automatic_installation = true,
             })
@@ -104,6 +106,10 @@ return {
                 cmd = { "tinymist" },
                 filetypes = { "typst" },
                 root_dir = vim.fs.root(0, { ".git", "." }),
+                settings = {
+                    exportPdf = "onType", -- Export PDF on each save
+                    outputPath = "$root/$dir/$name", -- PDF output path
+                },
             }
 
             -- Special configuration for Lua

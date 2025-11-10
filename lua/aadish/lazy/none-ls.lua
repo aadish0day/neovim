@@ -3,12 +3,14 @@ return {
 	{
 		"nvimtools/none-ls.nvim",
 		config = function()
-			require("null-ls").setup({
+			local null_ls = require("null-ls")
+			null_ls.setup({
 				sources = {
-					require("null-ls").builtins.formatting.shfmt,
-					require("null-ls").builtins.formatting.clang_format,
-					require("null-ls").builtins.formatting.stylua,
-					require("null-ls").builtins.formatting.black,
+					null_ls.builtins.formatting.shfmt,
+					null_ls.builtins.formatting.clang_format,
+					null_ls.builtins.formatting.stylua,
+					null_ls.builtins.formatting.black,
+					null_ls.builtins.formatting.typstyle, -- Add this line
 				},
 			})
 		end,
