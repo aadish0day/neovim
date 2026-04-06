@@ -9,7 +9,7 @@ return {
         dependencies = {
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
-            "jay-babu/mason-null-ls.nvim",
+            "WhoIsSethDaniel/mason-tool-installer.nvim", -- Add this
             "hrsh7th/nvim-cmp",
             "hrsh7th/cmp-nvim-lsp",
             "hrsh7th/cmp-buffer",
@@ -44,20 +44,22 @@ return {
                     "jdtls",
                     "ts_ls",
                     "pyright",
-                    "tinymist", -- Add Typst LSP (recommended)
+                    "tinymist",
                 },
                 automatic_installation = true,
             })
 
-            -- Null-LS setup
-            require("mason-null-ls").setup({
+            -- Mason Tool Installer setup (for formatters/linters)
+            require("mason-tool-installer").setup({
                 ensure_installed = {
-                    "shfmt",
                     "stylua",
                     "black",
-                    "typstyle", -- Add Typst formatter
+                    "shfmt",
+                    "clang-format",
+                    "typstyle",
+                    "prettierd",
+                    "prettier",
                 },
-                automatic_installation = true,
             })
 
             -- Keymapping to open Mason

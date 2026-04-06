@@ -42,13 +42,13 @@ vim.keymap.set("n", "<leader>sa", "<cmd>wa<CR>", { silent = true })
 -- Disable Ex mode mapping
 vim.keymap.set("n", "Q", "<nop>")
 
--- LSP and conform formatting shortcut
-vim.keymap.set("n", "<leader>f", function()
-    local buf_format = vim.lsp.buf.format or vim.lsp.buf.formatting
-    if buf_format then
-        buf_format()
-    end
-end)
+-- LSP and conform formatting shortcut (handled by conform.nvim in lua/aadish/lazy/format.lua)
+-- vim.keymap.set("n", "<leader>f", function()
+--     local buf_format = vim.lsp.buf.format or vim.lsp.buf.formatting
+--     if buf_format then
+--         buf_format()
+--     end
+-- end)
 
 -- Quick fix and location list navigation
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")

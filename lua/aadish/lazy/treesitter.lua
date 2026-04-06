@@ -1,28 +1,55 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
-		lazy = false, -- Plugin doesn't support lazy-loading
 		build = ":TSUpdate",
+		lazy = false,
+		dependencies = {
+			"windwp/nvim-ts-autotag",
+		},
 		config = function()
-			-- Install parsers (runs asynchronously)
-			require("nvim-treesitter").install({
-				"c",
-				"lua",
-				"html",
-				"java",
-				"javascript",
-				"bash",
-				"gitcommit",
-				"diff",
-				"markdown",
-			})
+			local status, configs = pcall(require, "nvim-treesitter.configs")
+			if not status then
+				return
+			end
 
-			-- Enable highlighting via autocmd
-			vim.api.nvim_create_autocmd("FileType", {
-				pattern = { "c", "lua", "html", "java", "javascript", "bash", "gitcommit", "diff", "markdown" },
-				callback = function()
-					vim.treesitter.start()
-				end,
+			configs.setup({
+				ensure_installed = {
+					"c",
+					"lua",
+					"vim",
+					"vimdoc",
+					"query",
+					"html",
+					"java",
+					"javascript",
+					"typescript",
+					"tsx",
+					"bash",
+					"markdown",
+					"markdown_inline",
+					"python",
+					"css",
+					"json",
+					"yaml",
+				},
+				sync_install = false,
+				highlight = {
+					enable = true,
+					additional_vim_regex_highlighting = false,
+				},
+				indent = { enable = true },
+				autotag = {
+					enable = true,
+				},
+				incremental_selection = {
+					enable = true,
+					keymaps = {
+						init_selection = "<C-space>",
+						node_incremental = "<C-space>",
+						scope_incremental = false,
+						node_decremental = "<bs>",
+					},
+				},
 			})
 		end,
 	},
