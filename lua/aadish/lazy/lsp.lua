@@ -45,9 +45,6 @@ return {
                     "ts_ls",
                     "pyright",
                     "tinymist",
-                    "tailwindcss",
-                    "emmet_ls",
-                    "eslint",
                     "ruff",
                 },
                 automatic_installation = true,
@@ -63,7 +60,6 @@ return {
                     "typstyle",
                     "prettierd",
                     "prettier",
-                    "eslint_d",
                 },
             })
 
@@ -83,7 +79,7 @@ return {
             end
 
             -- Use the new vim.lsp.config API instead of require('lspconfig')
-            local servers = { "html", "cssls", "ts_ls", "bashls", "clangd", "tailwindcss", "emmet_ls", "eslint", "ruff" }
+            local servers = { "html", "cssls", "ts_ls", "bashls", "clangd", "ruff" }
 
             for _, server in ipairs(servers) do
                 vim.lsp.config[server] = {
