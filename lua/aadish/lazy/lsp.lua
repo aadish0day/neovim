@@ -45,6 +45,10 @@ return {
                     "ts_ls",
                     "pyright",
                     "tinymist",
+                    "tailwindcss",
+                    "emmet_ls",
+                    "eslint",
+                    "ruff",
                 },
                 automatic_installation = true,
             })
@@ -53,12 +57,13 @@ return {
             require("mason-tool-installer").setup({
                 ensure_installed = {
                     "stylua",
-                    "black",
+                    "ruff",
                     "shfmt",
                     "clang-format",
                     "typstyle",
                     "prettierd",
                     "prettier",
+                    "eslint_d",
                 },
             })
 
@@ -78,7 +83,7 @@ return {
             end
 
             -- Use the new vim.lsp.config API instead of require('lspconfig')
-            local servers = { "html", "cssls", "ts_ls", "bashls", "clangd" }
+            local servers = { "html", "cssls", "ts_ls", "bashls", "clangd", "tailwindcss", "emmet_ls", "eslint", "ruff" }
 
             for _, server in ipairs(servers) do
                 vim.lsp.config[server] = {

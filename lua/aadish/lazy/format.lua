@@ -1,7 +1,6 @@
 return {
 	{
 		"stevearc/conform.nvim",
-		event = { "BufWritePre" },
 		cmd = { "ConformInfo" },
 		keys = {
 			{
@@ -16,16 +15,16 @@ return {
 		opts = {
 			formatters_by_ft = {
 				lua = { "stylua" },
-				python = { "black" },
-				javascript = { "prettierd", "prettier", stop_after_first = true },
-				typescript = { "prettierd", "prettier", stop_after_first = true },
-				javascriptreact = { "prettierd", "prettier", stop_after_first = true },
-				typescriptreact = { "prettierd", "prettier", stop_after_first = true },
-				css = { "prettierd", "prettier", stop_after_first = true },
-				html = { "prettierd", "prettier", stop_after_first = true },
-				json = { "prettierd", "prettier", stop_after_first = true },
-				yaml = { "prettierd", "prettier", stop_after_first = true },
-				markdown = { "prettierd", "prettier", stop_after_first = true },
+				python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
+				javascript = { "eslint_d", { "prettierd", "prettier" } },
+				typescript = { "eslint_d", { "prettierd", "prettier" } },
+				javascriptreact = { "eslint_d", { "prettierd", "prettier" } },
+				typescriptreact = { "eslint_d", { "prettierd", "prettier" } },
+				css = { { "prettierd", "prettier" } },
+				html = { { "prettierd", "prettier" } },
+				json = { { "prettierd", "prettier" } },
+				yaml = { { "prettierd", "prettier" } },
+				markdown = { { "prettierd", "prettier" } },
 				sh = { "shfmt" },
 				bash = { "shfmt" },
 				c = { "clang-format" },
