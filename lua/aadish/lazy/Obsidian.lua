@@ -1,68 +1,101 @@
--- Vimwiki Neovim Configuration with Lazy Plugin Manager to use .md files
-
 return {
 	{
 		"epwalsh/obsidian.nvim",
-		version = "*", -- recommended, use latest release instead of latest commit
+		version = "*",
 		lazy = true,
 		ft = "markdown",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
+			"hrsh7th/nvim-cmp",
+			"nvim-telescope/telescope.nvim",
 		},
-
-		config = function()
-			require("obsidian").setup({
-				dir = "~/Documents/Obsidian/",
-
-				disable_frontmatter = true, -- Add this line to disable frontmatter
-
-				daily_notes = {
-					-- Optional, if you keep daily notes in a separate directory.
-					folder = "Daily note",
-					-- Optional, if you want to change the date format for the ID of daily notes.
-					date_format = "%Y-%m-%d",
-					-- Optional, if you want to change the date format of the default alias of daily notes.
-					alias_format = "%B %-d, %Y",
-					-- Optional, default tags to add to each new daily note created.
-					default_tags = { "daily-notes" },
-					-- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
-					template = nil,
+		opts = {
+			workspaces = {
+				{
+					name = "obsidian",
+					path = "~/Documents/Obsidian",
 				},
-
-				completion = {
-					nvim_cmp = true,
-					min_chars = 2,
+			},
+			daily_notes = {
+				folder = "Daily note",
+				date_format = "%Y-%m-%d",
+				alias_format = "%B %-d, %Y",
+				default_tags = { "daily-notes" },
+			},
+			completion = {
+				nvim_cmp = true,
+				min_chars = 2,
+			},
+			mappings = {
+				["gf"] = {
+					action = function()
+						return require("obsidian").util.gf_passthrough()
+					end,
+					opts = { noremap = false, expr = true, buffer = true },
 				},
-
-				mappings = {
-					-- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
-					["gf"] = {
-						action = function()
-							return require("obsidian").util.gf_passthrough()
-						end,
-						opts = { noremap = false, expr = true, buffer = true },
-					},
-
-					-- Toggle check-boxes.
-					["<leader>op"] = {
-						action = function()
-							return require("obsidian").util.toggle_checkbox()
-						end,
-						opts = { buffer = true },
-					},
-					-- Smart action depending on context, either follow link or toggle checkbox.
-					["<cr>"] = {
-						action = function()
-							return require("obsidian").util.smart_action()
-						end,
-						opts = { buffer = true, expr = true },
-					},
+				-- Toggle check-boxes.
+				["<leader>ch"] = {
+					action = function()
+						return require("obsidian").util.toggle_checkbox()
+					end,
+					opts = { buffer = true },
 				},
-
-				ui = {
-					enable = true,
+				-- Smart action depending on context, either follow link or toggle checkbox.
+				["<cr>"] = {
+					action = function()
+						return require("obsidian").util.smart_action()
+					end,
+					opts = { buffer = true, expr = true },
 				},
-			})
+			},
+			new_notes_location = "current_dir",
+			preferred_link_style = "wiki",
+			disable_frontmatter = true,
+
+			follow_url_func = function(url)
+				vim.fn.jobstart({ "xdg-open", url })
+			end,
+			follow_img_func = function(img)
+				vim.fn.jobstart({ "xdg-open", img })
+			end,
+
+			picker = {
+				name = "telescope.nvim",
+			},
+
+			ui = {
+				enable = true,
+				update_debounce = 200,
+				checkboxes = {
+					[" "] = { char = "󰄱", hl_group = "ObsidianTodo" },
+					["x"] = { char = "", hl_group = "ObsidianDone" },
+					[">"] = { char = "", hl_group = "ObsidianRightArrow" },
+					["~"] = { char = "󰰱", hl_group = "ObsidianTilde" },
+					["!"] = { char = "", hl_group = "ObsidianImportant" },
+				},
+				bullets = { char = "•", hl_group = "ObsidianBullet" },
+				external_link_icon = { char = "", hl_group = "ObsidianExtLinkIcon" },
+				reference_text = { hl_group = "ObsidianRefText" },
+				highlight_text = { hl_group = "ObsidianHighlightText" },
+				tags = { hl_group = "ObsidianTag" },
+				block_ids = { hl_group = "ObsidianBlockID" },
+				hl_groups = {
+					ObsidianTodo = { bold = true, fg = "#f78c6c" },
+					ObsidianDone = { bold = true, fg = "#89ddff" },
+					ObsidianRightArrow = { bold = true, fg = "#f78c6c" },
+					ObsidianTilde = { bold = true, fg = "#ff5370" },
+					ObsidianImportant = { bold = true, fg = "#d73128" },
+					ObsidianBullet = { bold = true, fg = "#89ddff" },
+					ObsidianRefText = { underline = true, fg = "#c792ea" },
+					ObsidianExtLinkIcon = { fg = "#c792ea" },
+					ObsidianTag = { italic = true, fg = "#89ddff" },
+					ObsidianBlockID = { italic = true, fg = "#89ddff" },
+					ObsidianHighlightText = { bg = "#75662e" },
+				},
+			},
+		},
+		config = function(_, opts)
+			require("obsidian").setup(opts)
 
 			local map_opts = { noremap = true, silent = true }
 			vim.keymap.set("n", "<leader>on", ":ObsidianNew<CR>", map_opts)
@@ -78,15 +111,12 @@ return {
 		build = ":call mkdp#util#install()",
 		ft = { "markdown", "vimwiki" },
 		config = function()
-			-- Markdown Preview Settings
-			vim.g.mkdp_auto_start = 0 -- Don't auto open preview
-			vim.g.mkdp_auto_close = 1 -- Close preview when leaving markdown buffer
-			vim.g.mkdp_refresh_slow = 0 -- Update in real-time
-			vim.g.mkdp_command_for_global = 0 -- Only work on markdown files
-			vim.g.mkdp_open_to_the_world = 0 -- Only open locally
-			vim.g.mkdp_browser = "" -- Use system default browser
-
-			-- Custom preview settings
+			vim.g.mkdp_auto_start = 0
+			vim.g.mkdp_auto_close = 1
+			vim.g.mkdp_refresh_slow = 0
+			vim.g.mkdp_command_for_global = 0
+			vim.g.mkdp_open_to_the_world = 0
+			vim.g.mkdp_browser = ""
 			vim.g.mkdp_preview_options = {
 				mkit = {},
 				katex = {},
