@@ -49,10 +49,12 @@ rm -rf ~/.local/share/nvim
 ## Features
 - **Intelligent Autocompletion:** Powered by LSP and completion plugins.  
 - **Syntax Highlighting:** Modern and efficient with Treesitter.  
-- **LSP Support:** Language Server Protocol integration for code navigation, diagnostics, and more.  
-- **Git Integration:** Enhanced git workflows within Neovim.  
-- **Fuzzy Finder:** Find files, buffers, and more with blazing speed.  
-- **Beautiful UI:** Optimized themes, icons, and status lines for a pleasant experience.
+- **LSP Support:** Full integration for code navigation, hover documentation, and diagnostics.
+- **Snazzy Bufferline:** A modern tabline with slanted separators, file icons, modified markers, and **real-time LSP diagnostics** integrated into each tab.
+- **Git Integration:** Comprehensive git workflows, including signs, blame, and diff views.
+- **Fuzzy Finder:** Telescope integration for finding files, grep searching, and buffer management.
+- **Aesthetic UI:** Optimized for clarity and beauty with **Tokyonight** and **Onedark** themes, plus a customized **Lualine** status line.
+- **Indent Guides & Scope:** Clean vertical indent lines with a high-visibility red scope indicator to track your current context.
 
 ## Customization
 Feel free to fork, adapt, and personalize these configurations to suit your own workflow.
