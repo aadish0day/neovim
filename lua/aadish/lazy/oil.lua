@@ -1,7 +1,7 @@
 return {
 	{
 		"stevearc/oil.nvim",
-		dependencies = { "echasnovski/mini.icons" }, -- for file icons
+		dependencies = { "nvim-tree/nvim-web-devicons" }, -- for file icons
 		config = function()
 			require("oil").setup({
 				-- Set Oil as the default file explorer

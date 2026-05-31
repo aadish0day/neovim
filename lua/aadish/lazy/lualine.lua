@@ -1,7 +1,8 @@
 return {
     "nvim-lualine/lualine.nvim",
-    dependencies = { "echasnovski/mini.icons" },
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
+        local devicons = require("nvim-web-devicons")
         require("lualine").setup({
             options = {
                 icons_enabled = true,
@@ -22,7 +23,7 @@ return {
                 lualine_c = {
                     function()
                         local relpath = vim.fn.expand("%:.")
-                        local icon = require("mini.icons").get("file", relpath)
+                        local icon = devicons.get_icon(relpath, vim.fn.expand("%:e"))
                         return icon and string.format("%s %s", icon, relpath) or relpath
                     end,
                 },
@@ -51,7 +52,7 @@ return {
                 lualine_c = {
                     function()
                         local relpath = vim.fn.expand("%:.")
-                        local icon = require("mini.icons").get("file", relpath)
+                        local icon = devicons.get_icon(relpath, vim.fn.expand("%:e"))
                         return icon and string.format("%s %s", icon, relpath) or relpath
                     end,
                 },
