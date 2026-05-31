@@ -3,7 +3,7 @@ return {
 	version = "*",
 	lazy = false,
 	dependencies = {
-		"nvim-tree/nvim-web-devicons",
+		"echasnovski/mini.icons",
 	},
 	config = function()
 		-- Disable netrw at the very start
