@@ -82,10 +82,11 @@ return {
             local servers = { "html", "cssls", "ts_ls", "bashls", "clangd", "ruff" }
 
             for _, server in ipairs(servers) do
-                vim.lsp.config[server] = {
+                local existing = vim.lsp.config[server] or {}
+                vim.lsp.config[server] = vim.tbl_deep_extend("keep", existing, {
                     capabilities = capabilities,
                     on_attach = on_attach,
-                }
+                })
             end
 
             -- Setup for Java using jdtls
