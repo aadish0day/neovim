@@ -1,6 +1,6 @@
 return {
 	{
-		"epwalsh/obsidian.nvim",
+		"obsidian-nvim/obsidian.nvim",
 		version = "*",
 		lazy = true,
 		ft = "markdown",
@@ -23,56 +23,38 @@ return {
 				default_tags = { "daily-notes" },
 			},
 			completion = {
-				nvim_cmp = true,
 				min_chars = 2,
 			},
-			mappings = {
-				["gf"] = {
-					action = function()
-						return require("obsidian").util.gf_passthrough()
-					end,
-					opts = { noremap = false, expr = true, buffer = true },
-				},
-				-- Toggle check-boxes.
-				["<leader>ch"] = {
-					action = function()
-						return require("obsidian").util.toggle_checkbox()
-					end,
-					opts = { buffer = true },
-				},
-				-- Smart action depending on context, either follow link or toggle checkbox.
-				["<cr>"] = {
-					action = function()
-						return require("obsidian").util.smart_action()
-					end,
-					opts = { buffer = true, expr = true },
-				},
-			},
 			new_notes_location = "current_dir",
-			preferred_link_style = "wiki",
-			disable_frontmatter = true,
-
-			follow_url_func = function(url)
-				vim.fn.jobstart({ "xdg-open", url })
-			end,
-			follow_img_func = function(img)
-				vim.fn.jobstart({ "xdg-open", img })
-			end,
+			link = {
+				style = "wiki",
+			},
+			frontmatter = {
+				enabled = false,
+			},
+			legacy_commands = false,
 
 			picker = {
 				name = "telescope.nvim",
 			},
 
+			-- Show recently modified notes first in search
+			search = {
+				sort_by = "modified",
+				sort_reversed = true,
+			},
+
+			checkboxes = {
+				[" "] = { char = "󰄱", hl_group = "ObsidianTodo" },
+				["x"] = { char = "", hl_group = "ObsidianDone" },
+				[">"] = { char = "", hl_group = "ObsidianRightArrow" },
+				["~"] = { char = "󰰱", hl_group = "ObsidianTilde" },
+				["!"] = { char = "", hl_group = "ObsidianImportant" },
+			},
+
 			ui = {
 				enable = true,
 				update_debounce = 200,
-				checkboxes = {
-					[" "] = { char = "󰄱", hl_group = "ObsidianTodo" },
-					["x"] = { char = "", hl_group = "ObsidianDone" },
-					[">"] = { char = "", hl_group = "ObsidianRightArrow" },
-					["~"] = { char = "󰰱", hl_group = "ObsidianTilde" },
-					["!"] = { char = "", hl_group = "ObsidianImportant" },
-				},
 				bullets = { char = "•", hl_group = "ObsidianBullet" },
 				external_link_icon = { char = "", hl_group = "ObsidianExtLinkIcon" },
 				reference_text = { hl_group = "ObsidianRefText" },
@@ -97,13 +79,78 @@ return {
 		config = function(_, opts)
 			require("obsidian").setup(opts)
 
-			local map_opts = { noremap = true, silent = true }
-			vim.keymap.set("n", "<leader>on", ":ObsidianNew<CR>", map_opts)
-			vim.keymap.set("n", "<leader>ot", ":ObsidianToday<CR>", map_opts)
-			vim.keymap.set("n", "<leader>os", ":ObsidianSearch<CR>", map_opts)
+			-- Define standard keymaps with descriptive tags for which-key integration
+			vim.keymap.set("n", "<leader>on", ":ObsidianNew<CR>", { desc = "Create New Note", noremap = true, silent = true })
+			vim.keymap.set("n", "<leader>ot", ":ObsidianToday<CR>", { desc = "Open Today's Note", noremap = true, silent = true })
+			vim.keymap.set("n", "<leader>os", ":ObsidianSearch<CR>", { desc = "Search Notes", noremap = true, silent = true })
 			vim.keymap.set("n", "<leader>oo", function()
 				require("obsidian").util.open_app()
-			end, map_opts)
+			end, { desc = "Open Obsidian App", noremap = true, silent = true })
+
+			-- Additional productivity keymaps
+			vim.keymap.set("n", "<leader>ob", ":ObsidianBacklinks<CR>", { desc = "View Backlinks", noremap = true, silent = true })
+			vim.keymap.set("n", "<leader>ol", ":ObsidianLinks<CR>", { desc = "View Links in Note", noremap = true, silent = true })
+			vim.keymap.set("n", "<leader>oi", ":ObsidianLink<CR>", { desc = "Link Existing Note", noremap = true, silent = true })
+			vim.keymap.set("n", "<leader>or", ":ObsidianRename<CR>", { desc = "Rename Note & References", noremap = true, silent = true })
+			vim.keymap.set("n", "<leader>op", ":ObsidianPasteImg<CR>", { desc = "Paste Image from Clipboard", noremap = true, silent = true })
+
+			-- Command to automatically run the study session script for the current daily note
+			vim.api.nvim_create_user_command("CyberSecStudy", function()
+				-- Save current buffer if it has modifications to prevent conflict warnings
+				vim.cmd("silent! write")
+
+				-- Get the date from the current buffer filename (e.g. "2025-07-17")
+				local current_file = vim.fn.expand("%:t:r")
+
+				local vault_path = vim.fn.expand("~/Documents/Obsidian")
+				local script_path = vault_path .. "/scripts/setup_study_session.py"
+				vim.fn.jobstart({ "python3", script_path, current_file }, {
+					on_exit = function(_, code)
+						if code == 0 then
+							-- Force reload current buffer to show new study links without warnings
+							vim.cmd("edit!")
+							print("Study session created and linked successfully!")
+						else
+							print("Error: Could not create study session. Make sure the filename contains a YYYY-MM-DD date.")
+						end
+					end
+				})
+			end, {})
+
+			vim.keymap.set("n", "<leader>od", ":CyberSecStudy<CR>", { desc = "Run Cybersecurity Study Script", noremap = true, silent = true })
+
+			-- Define Markdown-specific buffer keymaps and styling
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = "markdown",
+				callback = function()
+					local keymap_opts = { buffer = true, silent = true }
+					
+					-- Enable conceallevel so Obsidian custom icons and bullets display correctly
+					vim.opt_local.conceallevel = 2
+
+					-- Highlight raw URLs with the Obsidian link color (purple)
+					vim.fn.matchadd("ObsidianRefText", [[https\?:\/\/[^ \t\r\n<>"]\+]])
+
+					-- Follow link
+					vim.keymap.set("n", "gf", function()
+						if require("obsidian").util.cursor_on_markdown_link() then
+							return "<cmd>ObsidianFollowLink<CR>"
+						else
+							return "gf"
+						end
+					end, { noremap = false, expr = true, buffer = true })
+
+					-- Toggle check-boxes
+					vim.keymap.set("n", "<leader>ch", function()
+						require("obsidian").util.toggle_checkbox()
+					end, keymap_opts)
+
+					-- Smart action (follow link / toggle checkbox)
+					vim.keymap.set("n", "<cr>", function()
+						return require("obsidian").util.smart_action()
+					end, { buffer = true, expr = true })
+				end,
+			})
 		end,
 	},
 	{

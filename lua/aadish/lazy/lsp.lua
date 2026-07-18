@@ -94,7 +94,7 @@ return {
                 capabilities = capabilities,
                 on_attach = on_attach,
                 cmd = { "jdtls" },
-                root_dir = vim.fs.root(0, { "gradlew", "mvnw", ".git" }),
+                root_dir = vim.fs.root(vim.api.nvim_buf_get_name(0), { "gradlew", "mvnw", ".git" }),
             }
 
             -- Setup for Python LSP
@@ -109,7 +109,7 @@ return {
                 on_attach = on_attach,
                 cmd = { "tinymist" },
                 filetypes = { "typst" },
-                root_dir = vim.fs.root(0, { ".git", "." }),
+                root_dir = vim.fs.root(vim.api.nvim_buf_get_name(0), { ".git", "." }),
                 settings = {
                     exportPdf = "onType", -- Export PDF on each save
                     outputPath = "$root/$dir/$name", -- PDF output path
