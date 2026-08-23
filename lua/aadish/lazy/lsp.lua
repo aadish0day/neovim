@@ -73,7 +73,7 @@ return {
 
             -- on_attach function
             local on_attach = function(client, bufnr)
-                print("Attached to LSP") -- Confirm LSP is attached
+                -- LSP attached (fidget.nvim handles status display)
                 local opts = { buffer = bufnr, noremap = true, silent = true }
                 -- key mappings...
             end
