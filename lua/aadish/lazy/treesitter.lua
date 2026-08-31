@@ -31,6 +31,7 @@ return {
 					"css",
 					"json",
 					"yaml",
+					"dart",
 				},
 				sync_install = false,
 				highlight = {

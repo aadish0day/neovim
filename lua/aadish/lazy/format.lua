@@ -1,6 +1,7 @@
 return {
 	{
 		"stevearc/conform.nvim",
+		event = { "BufReadPre", "BufNewFile" },
 		cmd = { "ConformInfo" },
 		keys = {
 			{
@@ -30,6 +31,11 @@ return {
 				c = { "clang-format" },
 				cpp = { "clang-format" },
 				typst = { "typstyle" },
+				dart = { "dart_format" },
+			},
+			format_on_save = {
+				timeout_ms = 1000,
+				lsp_format = "fallback",
 			},
 		},
 	},
