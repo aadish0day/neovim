@@ -4,14 +4,14 @@ A modern, feature-rich Neovim setup designed for productivity across multiple la
 
 ## Prerequisites
 
-| Dependency | Purpose |
-|---|---|
-| [Neovim](https://neovim.io) 0.9+ | Core editor |
-| [Git](https://git-scm.com) | Plugin management |
-| [Node.js](https://nodejs.org) | LSP servers & tooling |
-| [Python 3](https://python.org) | LSP servers (pyright, debugger) |
-| [Ripgrep](https://github.com/BurntSushi/ripgrep) | Telescope fuzzy search |
-| [fd](https://github.com/sharkdp/fd) | Fast file finding |
+| Dependency                                       | Purpose                         |
+| ------------------------------------------------ | ------------------------------- |
+| [Neovim](https://neovim.io) 0.9+                 | Core editor                     |
+| [Git](https://git-scm.com)                       | Plugin management               |
+| [Node.js](https://nodejs.org)                    | LSP servers & tooling           |
+| [Python 3](https://python.org)                   | LSP servers (pyright, debugger) |
+| [Ripgrep](https://github.com/BurntSushi/ripgrep) | Telescope fuzzy search          |
+| [fd](https://github.com/sharkdp/fd)              | Fast file finding               |
 
 ## Installation
 
@@ -37,6 +37,7 @@ rm -rf ~/.config/nvim ~/.local/state/nvim ~/.local/share/nvim
 ## Features
 
 ### Editor
+
 - **Autocompletion** — `nvim-cmp` with LSP, snippet, buffer, and path sources
 - **Syntax Highlighting** — Treesitter across C, Lua, Python, JS/TS, HTML, CSS, Java, Bash, Markdown, YAML, JSON
 - **Formatting** — `conform.nvim` auto-formats on keybind; supports stylua, ruff, prettier, clang-format, shfmt, typstyle
@@ -44,22 +45,26 @@ rm -rf ~/.config/nvim ~/.local/state/nvim ~/.local/share/nvim
 - **Debugging** — `nvim-dap` with UI, virtual text, and Python support (F5/F10/F11/F12)
 
 ### UI
+
 - **Theme** — Onedark (default) and Tokyonight themes with transparency
 - **Statusline** — `lualine.nvim` showing mode, branch, diff, diagnostics, LSP clients, file path with icon
 - **Bufferline** — Slanted tab separators with LSP diagnostics, modified indicators, close icons
 - **File Explorer** — `nvim-tree.lua` (floating, <kbd>Ctrl+f</kbd>) and `oil.nvim` (<kbd>-</kbd>)
-- **Indent Guides** — `mini.indentscope` with red scope indicator
+- **Indent Guides** — `indent-blankline.nvim` + `mini.indentscope` with dynamic scope indicator
 
 ### Navigation
+
 - **Telescope** — File find, live grep, buffers, help tags, git files, fuzzy buffer search
 - **Quickfix** — <kbd>Ctrl+k/j</kbd> for quickfix, <kbd>Leader+k/j</kbd> for location list
 
 ### Git
+
 - **Gitsigns** — Inline git signs, blame, diff preview
 - **Fugitive** — Git command interface
 - **Diffview** — Side-by-side diff viewer
 
 ### Extras
+
 - **Obsidian** — Vault integration with daily notes, wiki links, checkboxes, Telescope picker
 - **Markdown Preview** — Live preview toggle
 - **Typst Preview** — Live PDF preview for Typst files
@@ -71,22 +76,22 @@ rm -rf ~/.config/nvim ~/.local/state/nvim ~/.local/share/nvim
 
 ## Key Mappings
 
-| Mode | Key | Action |
-|---|---|---|
-| `n` | `<Leader>ff` | Find files |
-| `n` | `<Leader>fg` | Live grep |
-| `n` | `<C-p>` | Git files |
-| `n` | `<Leader>/` | Fuzzy search buffer |
-| `n` | `<Leader>f` | Format buffer |
-| `n` | `<Tab>` / `<S-Tab>` | Cycle buffers |
-| `n` | `<Leader>q` | Close buffer |
-| `n` | `<C-f>` | Toggle file explorer |
-| `n` | `-` | Oil file explorer |
-| `n` | `<Leader>l` | Lazy plugin manager |
-| `n` | `<Leader>m` | Mason LSP manager |
-| `n` | `<F5>` | Debug continue |
-| `n` | `<F10>` | Debug step over |
-| `n` | `<Leader>u` | Undotree toggle |
+| Mode | Key                 | Action               |
+| ---- | ------------------- | -------------------- |
+| `n`  | `<Leader>ff`        | Find files           |
+| `n`  | `<Leader>fg`        | Live grep            |
+| `n`  | `<C-p>`             | Git files            |
+| `n`  | `<Leader>/`         | Fuzzy search buffer  |
+| `n`  | `<Leader>f`         | Format buffer        |
+| `n`  | `<Tab>` / `<S-Tab>` | Cycle buffers        |
+| `n`  | `<Leader>q`         | Close buffer         |
+| `n`  | `<C-f>`             | Toggle file explorer |
+| `n`  | `-`                 | Oil file explorer    |
+| `n`  | `<Leader>l`         | Lazy plugin manager  |
+| `n`  | `<Leader>m`         | Mason LSP manager    |
+| `n`  | `<F5>`              | Debug continue       |
+| `n`  | `<F10>`             | Debug step over      |
+| `n`  | `<Leader>u`         | Undotree toggle      |
 
 See `lua/aadish/remap.lua` and individual plugin configs for the full mapping list.
 
