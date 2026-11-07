@@ -1,23 +1,52 @@
 return {
 	{
-		"github/copilot.vim",
-		init = function()
-			vim.g.copilot_no_tab_map = true
-		end,
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
+		event = "InsertEnter",
 		config = function()
-			-- Prevent Copilot from hijacking <Tab>
-			vim.g.copilot_no_tab_map = true
-
-			-- Enable Copilot by default
-			vim.g.copilot_enabled = true
-
-			-- Define keybindings (optional)
-			vim.keymap.set(
-				"i",
-				"<C-l>",
-				'copilot#Accept("<CR>")',
-				{ expr = true, silent = true, script = true, replace_keycodes = false }
-			)
+			require("copilot").setup({
+				panel = {
+					enabled = true,
+					auto_refresh = false,
+					keymap = {
+						jump_prev = "[[",
+						jump_next = "]]",
+						accept = "<CR>",
+						refresh = "gr",
+						open = "<M-CR>",
+					},
+					layout = {
+						position = "bottom",
+						ratio = 0.4,
+					},
+				},
+				suggestion = {
+					enabled = true,
+					auto_trigger = true,
+					hide_during_completion = true,
+					debounce = 75,
+					keymap = {
+						accept = "<C-l>",
+						accept_word = "<M-w>",
+						accept_line = "<M-l>",
+						next = "<M-]>",
+						prev = "<M-[>",
+						dismiss = "<C-]>",
+					},
+				},
+				filetypes = {
+					yaml = false,
+					markdown = false,
+					help = false,
+					gitcommit = false,
+					gitrebase = false,
+					hgcommit = false,
+					svn = false,
+					cvs = false,
+					["."] = false,
+				},
+				copilot_node_command = "node",
+			})
 		end,
 	},
 }
