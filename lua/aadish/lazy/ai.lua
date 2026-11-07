@@ -2,7 +2,7 @@ return {
 	{
 		"zbirenbaum/copilot.lua",
 		cmd = "Copilot",
-		event = "InsertEnter",
+		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			require("copilot").setup({
 				panel = {
@@ -23,7 +23,7 @@ return {
 				suggestion = {
 					enabled = true,
 					auto_trigger = true,
-					hide_during_completion = true,
+					hide_during_completion = false,
 					debounce = 75,
 					keymap = {
 						accept = "<C-l>",
@@ -35,15 +35,7 @@ return {
 					},
 				},
 				filetypes = {
-					yaml = false,
-					markdown = false,
-					help = false,
-					gitcommit = false,
-					gitrebase = false,
-					hgcommit = false,
-					svn = false,
-					cvs = false,
-					["."] = false,
+					["*"] = true,
 				},
 				copilot_node_command = "node",
 			})
