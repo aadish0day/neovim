@@ -9,8 +9,6 @@ vim.opt.softtabstop = 4                                -- Number of spaces that 
 vim.opt.shiftwidth = 4                                 -- Number of spaces to use for each step of (auto)indent.
 vim.opt.expandtab = true                               -- Convert tabs to spaces.
 
-vim.opt.smartindent = true                             -- Enable smart indentation.
-
 vim.opt.swapfile = false                               -- Disable swapfile.
 vim.opt.backup = false                                 -- Disable backup file.
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir" -- Set undo directory.
@@ -26,9 +24,16 @@ vim.opt.updatetime = 50                                -- Faster completion (def
 
 vim.opt.signcolumn = 'yes'                             -- Always show the sign column.
 vim.opt.spelllang = 'en_us'                            -- Set spell check language to US English.
-vim.opt.spell = true                                   -- Enable spell checking.
 
 vim.opt.hlsearch = true                                -- Highlight all matches of search pattern.
 vim.opt.incsearch = true                               -- Show search matches as you type.
 
 vim.opt.conceallevel = 2
+
+-- Enable spell checking only for prose filetypes
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "markdown", "text", "gitcommit" },
+	callback = function()
+		vim.opt_local.spell = true
+	end,
+})

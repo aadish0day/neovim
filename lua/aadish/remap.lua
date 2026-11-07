@@ -20,7 +20,9 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
 -- Delete without overwriting the clipboard
-vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
+-- Normal mode uses <leader>D to prevent 1s hesitation conflict with DAP keymaps (<leader>db, <leader>dB, <leader>du)
+vim.keymap.set("v", "<leader>d", [["_d]], { desc = "Delete without yanking" })
+vim.keymap.set("n", "<leader>D", [["_d]], { desc = "Delete without yanking" })
 
 -- Cut without overwriting the clipboard
 vim.keymap.set({ "n", "v" }, "<leader>c", [["_c]])
@@ -33,11 +35,13 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
 -- Keybinding for saving the file with Ctrl+s in normal, insert, and visual modes
+-- Note: In tmux, <C-s> is often intercepted by the tmux prefix, so <leader>w / <leader>W are the recommended save bindings.
 vim.keymap.set("n", "<C-s>", "<cmd>w<CR>", { silent = true })
 vim.keymap.set("i", "<C-s>", "<C-[><cmd>w<CR><C-o>", { silent = true })
 vim.keymap.set("v", "<C-s>", "<C-c><cmd>w<CR>", { silent = true })
-
-vim.keymap.set("n", "<leader>sa", "<cmd>wa<CR>", { silent = true })
+vim.keymap.set("n", "<leader>w", "<cmd>w<CR>", { silent = true, desc = "Save file" })
+vim.keymap.set("v", "<leader>w", "<Esc><cmd>w<CR>", { silent = true, desc = "Save file" })
+vim.keymap.set("n", "<leader>W", "<cmd>wa<CR>", { silent = true, desc = "Save all files" })
 
 -- Disable Ex mode mapping
 vim.keymap.set("n", "Q", "<nop>")

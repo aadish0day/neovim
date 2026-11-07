@@ -45,8 +45,7 @@ return {
     -- Tokyonight Theme
     {
         "folke/tokyonight.nvim",
-        lazy = false,
-        priority = 1000, -- Ensures the theme is loaded early
+        lazy = true,
 
         config = function()
             require("tokyonight").setup({

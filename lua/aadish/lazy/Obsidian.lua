@@ -9,6 +9,24 @@ return {
 			"hrsh7th/nvim-cmp",
 			"nvim-telescope/telescope.nvim",
 		},
+		keys = {
+			{ "<leader>on", ":ObsidianNew<CR>", desc = "Create New Note" },
+			{ "<leader>ot", ":ObsidianToday<CR>", desc = "Open Today's Note" },
+			{ "<leader>os", ":ObsidianSearch<CR>", desc = "Search Notes" },
+			{
+				"<leader>oo",
+				function()
+					require("obsidian").util.open_app()
+				end,
+				desc = "Open Obsidian App",
+			},
+			{ "<leader>ob", ":ObsidianBacklinks<CR>", desc = "View Backlinks" },
+			{ "<leader>ol", ":ObsidianLinks<CR>", desc = "View Links in Note" },
+			{ "<leader>oi", ":ObsidianLink<CR>", desc = "Link Existing Note" },
+			{ "<leader>or", ":ObsidianRename<CR>", desc = "Rename Note & References" },
+			{ "<leader>op", ":ObsidianPasteImg<CR>", desc = "Paste Image from Clipboard" },
+			{ "<leader>od", ":CyberSecStudy<CR>", desc = "Run Cybersecurity Study Script" },
+		},
 		opts = {
 			workspaces = {
 				{
@@ -79,21 +97,6 @@ return {
 		config = function(_, opts)
 			require("obsidian").setup(opts)
 
-			-- Define standard keymaps with descriptive tags for which-key integration
-			vim.keymap.set("n", "<leader>on", ":ObsidianNew<CR>", { desc = "Create New Note", noremap = true, silent = true })
-			vim.keymap.set("n", "<leader>ot", ":ObsidianToday<CR>", { desc = "Open Today's Note", noremap = true, silent = true })
-			vim.keymap.set("n", "<leader>os", ":ObsidianSearch<CR>", { desc = "Search Notes", noremap = true, silent = true })
-			vim.keymap.set("n", "<leader>oo", function()
-				require("obsidian").util.open_app()
-			end, { desc = "Open Obsidian App", noremap = true, silent = true })
-
-			-- Additional productivity keymaps
-			vim.keymap.set("n", "<leader>ob", ":ObsidianBacklinks<CR>", { desc = "View Backlinks", noremap = true, silent = true })
-			vim.keymap.set("n", "<leader>ol", ":ObsidianLinks<CR>", { desc = "View Links in Note", noremap = true, silent = true })
-			vim.keymap.set("n", "<leader>oi", ":ObsidianLink<CR>", { desc = "Link Existing Note", noremap = true, silent = true })
-			vim.keymap.set("n", "<leader>or", ":ObsidianRename<CR>", { desc = "Rename Note & References", noremap = true, silent = true })
-			vim.keymap.set("n", "<leader>op", ":ObsidianPasteImg<CR>", { desc = "Paste Image from Clipboard", noremap = true, silent = true })
-
 			-- Command to automatically run the study session script for the current daily note
 			vim.api.nvim_create_user_command("CyberSecStudy", function()
 				-- Save current buffer if it has modifications to prevent conflict warnings
@@ -111,20 +114,22 @@ return {
 							vim.cmd("edit!")
 							print("Study session created and linked successfully!")
 						else
-							print("Error: Could not create study session. Make sure the filename contains a YYYY-MM-DD date.")
+							print(
+								"Error: Could not create study session. Make sure the filename contains a YYYY-MM-DD date."
+							)
 						end
-					end
+					end,
 				})
 			end, {})
 
-			vim.keymap.set("n", "<leader>od", ":CyberSecStudy<CR>", { desc = "Run Cybersecurity Study Script", noremap = true, silent = true })
-
 			-- Define Markdown-specific buffer keymaps and styling
+			local obsidian_group = vim.api.nvim_create_augroup("ObsidianMarkdown", { clear = true })
 			vim.api.nvim_create_autocmd("FileType", {
+				group = obsidian_group,
 				pattern = "markdown",
 				callback = function()
 					local keymap_opts = { buffer = true, silent = true }
-					
+
 					-- Enable conceallevel so Obsidian custom icons and bullets display correctly
 					vim.opt_local.conceallevel = 2
 

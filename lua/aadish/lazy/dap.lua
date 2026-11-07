@@ -15,7 +15,11 @@ return {
             require("nvim-dap-virtual-text").setup()
 
             -- Python setup
-            require("dap-python").setup("python3")
+            local mason_path = vim.fn.stdpath("data") .. "/mason/packages/debugpy/venv/bin/python"
+            local python_path = vim.fn.executable(mason_path) == 1 and mason_path or "python3"
+            pcall(function()
+                require("dap-python").setup(python_path)
+            end)
 
             dap.listeners.after.event_initialized["dapui_config"] = function()
                 dapui.open()

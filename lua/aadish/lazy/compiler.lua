@@ -5,6 +5,7 @@ return {
 		cmd = { "CompilerOpen", "CompilerToggleResults", "CompilerRedo" },
 		dependencies = { "stevearc/overseer.nvim", "nvim-telescope/telescope.nvim" },
 		opts = {},
+		keys = { { "<leader>r", "<cmd>CompilerOpen<cr>", desc = "Open Compiler" } },
 	},
 	{ -- The task runner we use
 		"stevearc/overseer.nvim",
@@ -19,5 +20,4 @@ return {
 			},
 		},
 	},
-	vim.api.nvim_set_keymap("n", "<leader>r", "<cmd>CompilerOpen<cr>", { noremap = true, silent = true }),
 }

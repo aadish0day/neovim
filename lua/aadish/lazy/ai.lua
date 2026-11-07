@@ -48,7 +48,13 @@ return {
 	-- },
     {
         "github/copilot.vim",
+        init = function()
+            vim.g.copilot_no_tab_map = true
+        end,
         config = function()
+            -- Prevent Copilot from hijacking <Tab>
+            vim.g.copilot_no_tab_map = true
+
             -- Enable Copilot by default
             vim.g.copilot_enabled = true
 

@@ -15,6 +15,10 @@ return {
 
 		-- Setup NvimTree with options
 		require("nvim-tree").setup({
+			hijack_directories = {
+				enable = false,
+				auto_open = false,
+			},
 			sort = {
 				sorter = "case_sensitive",
 			},
