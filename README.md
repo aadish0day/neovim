@@ -63,7 +63,7 @@ rm -rf ~/.config/nvim ~/.local/state/nvim ~/.local/share/nvim
 - **Obsidian** — Vault integration with daily notes, wiki links, checkboxes, Telescope picker
 - **Markdown Preview** — Live preview toggle
 - **Typst Preview** — Live PDF preview for Typst files
-- **AI** — `gen.nvim` (Ollama) and GitHub Copilot
+- **AI** — GitHub Copilot
 - **Code Screenshots** — Carbon-now.nvim (<kbd>Leader+cn</kbd> in visual mode)
 - **Live Server** — HTML live reload
 - **Undotree** — Visual undo history
@@ -102,7 +102,7 @@ See `lua/aadish/remap.lua` and individual plugin configs for the full mapping li
     ├── remap.lua            # Global keymaps
     ├── lazy_init.lua        # lazy.nvim bootstrap
     └── lazy/                # Plugin configurations
-        ├── ai.lua           # gen.nvim, copilot
+        ├── ai.lua           # copilot
         ├── lsp.lua          # Mason, LSP, nvim-cmp, luasnip
         ├── treesitter.lua   # Treesitter + autotag
         ├── telescope.lua    # Telescope + fzf
