@@ -1,69 +1,60 @@
 return {
+	-- Indent guides for Neovim
 	{
 		"lukas-reineke/indent-blankline.nvim",
-		main = "ibl",
-		event = { "BufReadPost", "BufNewFile" },
-		opts = {
-			indent = {
-				char = "│",
-				tab_char = "│",
-			},
-			scope = {
-				enabled = false, -- Handled dynamically with textobjects by mini.indentscope
-			},
-			exclude = {
-				filetypes = {
-					"help",
-					"alpha",
-					"dashboard",
-					"NvimTree",
-					"Trouble",
-					"trouble",
-					"lazy",
-					"mason",
-					"notify",
-					"toggleterm",
-					"lazyterm",
-					"oil",
+		event = { "BufReadPost", "BufNewFile" }, -- Load when a buffer is read or created
+		config = function()
+			require("ibl").setup({
+				scope = {
+					enabled = false, -- Example option to disable scope highlighting
 				},
-				buftypes = { "terminal", "nofile", "quickfix", "prompt" },
-			},
-		},
+			})
+		end,
 	},
 	{
 		"echasnovski/mini.indentscope",
 		version = "*",
-		event = { "BufReadPost", "BufNewFile" },
-		opts = function()
-			return {
-				symbol = "│",
-				options = { try_as_border = true },
+		event = { "BufReadPost", "BufNewFile" }, -- Load when a buffer is read or created
+		config = function()
+			require("mini.indentscope").setup({
+				-- Draw options
 				draw = {
-					delay = 0,
-					animation = require("mini.indentscope").gen_animation.none(),
-					priority = 20,
+					delay = 0, -- No delay between event and start of drawing scope indicator
+					animation = require("mini.indentscope").gen_animation.none(), -- No animation for instant appearance
+					priority = 20, -- Increased priority to ensure it shows over other guides
 				},
+				-- Module mappings. Use `''` (empty string) to disable one.
 				mappings = {
-					object_scope = "ii",
-					object_scope_with_border = "ai",
-					goto_top = "[i",
-					goto_bottom = "]i",
+					object_scope = "ii", -- Textobjects
+					object_scope_with_border = "ai", -- Textobjects with border
+					goto_top = "[i", -- Jump to top border
+					goto_bottom = "]i", -- Jump to bottom border
 				},
-			}
-		end,
-		config = function(_, opts)
-			require("mini.indentscope").setup(opts)
+				-- Options which control scope computation
+				options = {
+					border = "both", -- Type of scope's border
+					indent_at_cursor = false, -- Use cursor column for computing reference indent
+					try_as_border = true, -- Check if input line is a border of adjacent scope
+				},
+				symbol = "│", -- Using a more standard vertical bar
+			})
 
-			-- Use a stylish accent color linked to theme instead of error red
-			local function set_hl()
-				vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", { link = "Special", nocombine = true })
+			-- Function to set the highlight
+			local function set_indentscope_hl()
+				vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", { fg = "#e06c75", nocombine = true })
 			end
-			set_hl()
-			vim.api.nvim_create_autocmd("ColorScheme", { callback = set_hl })
 
-			-- Disable in special buffers & tools
+			-- Set color initially
+			set_indentscope_hl()
+
+			-- Ensure color persists after colorscheme changes
+			vim.api.nvim_create_autocmd("ColorScheme", {
+				callback = set_indentscope_hl,
+			})
+
+			-- Disable mini.indentscope for specific filetypes
 			vim.api.nvim_create_autocmd("FileType", {
-				pattern = { "NvimTree", "undotree", "mason", "lazy", "oil", "help", "Trouble", "trouble" },
+				pattern = { "NvimTree", "undotree", "mason", "lazy", "oil" },
 				callback = function()
 					vim.b.miniindentscope_disable = true
 				end,

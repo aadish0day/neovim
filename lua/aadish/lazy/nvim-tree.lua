@@ -59,9 +59,9 @@ return {
 					enable = true,
 					inline_arrows = true,
 					icons = {
-						corner = "└ ",
-						edge = "│ ",
-						item = "│ ",
+						corner = "└",
+						edge = "│",
+						item = "├",
 						bottom = "─",
 						none = " ",
 					},
